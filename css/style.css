@@ -1,0 +1,97 @@
+/*
+ * CSS Styles for Risk Demo App
+ *
+ * Copyright 2014, Vancouver Film School
+ *
+ */
+
+body {
+    background-color:white;
+}
+
+body,div {
+    margin:0;
+    padding:0;
+    border:none;
+    color:#fff;
+    font-family: "Helvetica";
+}
+
+/* Styles for illustrating the example */
+a {
+    color:#FFF;
+    text-decoration:underline;
+}
+
+div > * {
+    margin: 10px;
+}
+
+div {
+    position: relative;
+    background-color: #999;
+}
+
+button {
+    border-radius: 2px;
+    font-weight: 700;
+    padding: 0.5em;
+}
+
+.debug {
+    border:1px dashed red;
+    z-index: 6000;    
+}
+
+.clear { clear: both; }
+
+.menuitem {
+    list-style-type: none;
+    margin: 2px;
+}
+
+.dialog {
+    width: 50%;
+    box-shadow: 3px 3px 13px black;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.wrapper {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 1%;
+    background-color: lightgrey;
+    border: 1px solid black;
+}
+
+.sidebar {
+    width: 20%;
+    float:left;
+    display: inline-block;
+}
+
+.current-screen {
+    width: 65%;
+    margin-left: 25%;
+}
+
+.app-screen {
+    position: relative;
+    margin: 0 auto;
+}
+
+.simple-form { }
+
+
+li.button {
+    width:  20em;
+}
+
+.menuitem button {
+    min-width: 10em;
+}
+
+#home-area {
+    padding-top:  0em;
+}

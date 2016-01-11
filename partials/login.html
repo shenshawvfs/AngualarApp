@@ -1,0 +1,29 @@
+<!-- Demo Copyright (C) 2015 Kibble Games Inc in partnership with Vancouver Film School -->
+<section id="welcome">
+    <div id="login-server" class="dialog">
+        <h3>Welcome! Please Login!</h3>
+        <form ng-submit="login.authenticate(user)" ng-model-options="{debounce:500}">
+            <input class="input login username" type="text" placeholder="username" 
+                   ng-model="user.name"/><br />
+            <input class="input login password" type="password" placeholder="password" 
+                   ng-model="user.passwd"/><br>
+            <input class="input login submit" type="submit" placeholder="Login!" />
+            <input class="input login button" 
+                   type="button" 
+                   placeholder="Register" 
+                   value="Register" 
+                   ng-click="login.register()"/>
+            <input class="input login button"   
+                   type="button"   
+                   placeholder="Logout" 
+                   ng-if="login.status=='on'" 
+                   ng-click="login.logout()"/>
+            Logout</button>
+        </form>
+        
+        <div>
+        Logged {{login.status}} <span ng-if="login.status=='on'"> as {{login.username}} <br />
+        id: {{login.id}}</span>
+        </div>    
+    </div>
+</section>

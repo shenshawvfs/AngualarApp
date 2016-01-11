@@ -1,0 +1,17 @@
+{
+    "box_bio": {
+        "app_url": "bio.html", 
+        "name": "My Box Model Bio",
+        "thumbnail": "images/profile_base.jpg",
+        "version": "1.0",
+        "description": "My first box model page - my biography."
+    },
+
+    "bio" : {
+        "app_url": "index.html",
+        "name": "My Bio",
+        "thumbnail": "images/profile.jpg",
+        "version": "1.0",
+        "description": "My Biography."
+    }
+}
