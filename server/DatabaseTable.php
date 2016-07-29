@@ -21,7 +21,7 @@ class DatabaseTable {
 
 		$sql = $db->prepare("INSERT INTO products(id, name, wholesale_price, retail_price, quantity, box_id)
 		  			              VALUES ( NULL, :name, :wholesale_price, :retail_price, :quantity, :box_id)");
-		if(!$sql->execute())
+		if(!$sql->execute( $params ))
 		{
 			return $sql->errorCode();
 		}
