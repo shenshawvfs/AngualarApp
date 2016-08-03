@@ -1,16 +1,23 @@
 <?php
-include_once '../lib/Database.php';
+include_once 'Database.php';
 
 // Adapt to your Table
 class UsersTable {
 
+	private $db = null;
+	
+	function __construct() {
+		
+		$this->db = Database::connection();
+		
+	}
+	
 	function create( $data ){
 
 	    $params = $this->setParams( $data );
-	    $db = Database::connection();
-		$sql = $db->prepare("INSERT INTO users(id, lastname, firstname, phone, email, office, title)
-		  			              VALUES ( NULL, :lastname, :firstname, :phone, :email, :office, :title)");
-		if(!$sql->execute( $params )) {
+		$sql = $this->db->prepare("INSERT INTO users(id, nickname) VALUES ( :id, :nickname)");
+		$result = $sql->execute( $params );
+		if(!$result) {
 			return $db->errorCode();
 		}
 
@@ -18,49 +25,48 @@ class UsersTable {
 	}
 
 
-	function readByEmail( $email ){
+	function readByNickname( $nickname ){
 
-		$db = Database::connection();
-		$sql = $db->prepare("SELECT * FROM users u WHERE u.email LIKE '%".trim($email)."%'");
+		//$db = Database::connection();
+		$sql = $this->db->prepare("SELECT * FROM users u WHERE u.nickname LIKE '%".trim($nickname)."%'");
 		$sql->execute();
-
+	
+		// Fetch the rows.  Result will be an array of objects (PHP Data Objects[PDO])
 		$result = $sql->fetchAll(\PDO::FETCH_OBJ);
-		if (empty( $result ))
-		    $result[]["name"] = "No product found";
-
+		if (!isset( $result[0]->id ))
+			$result = null;
+		
 		return $result;
 	}
 
 
 	function readByID( $id ){
 
-		$db = Database::connection();
-		$sql = $db->prepare("SELECT * FROM users u where u.id=".$id);
+		//$db = Database::connection();
+		$sql = $this->db->prepare("SELECT * FROM users u where u.id=".$id);
 		$sql->execute();
 
-		$row = $sql->fetch(\PDO::FETCH_OBJ);
-		if (!isset( $row->id ))
-		    $row = "No product found";
+		$result[0] = $sql->fetch(\PDO::FETCH_OBJ);
+		if (!isset( $result[0]->id ))
+		    $result[0] = "No id found";
 
-		return $row;
+		return $result[0];
 	}
 
 	function update( $data ){
 
 		$params = $this->setParams( $data );
-	    $db = Database::connection();
-		$sql = $db->prepare('UPDATE users
-		                     SET lastname = :lastname,
-		                          firstname = :firstname,
-		                          phone = :phone,
-					               email = :email,
-		                          office = :office,
-		                          title = :title
-						      WHERE id = :id');
+	    //$db = Database::connection();
+		$sql = $this->db->prepare('UPDATE users
+		                           SET id = :id,
+		                               nickname = :nickname
+				                   WHERE id = :id');
 
-		if (!$sql->execute( $params ))
+		$result = $sql->execute( $params );
+		if (!$result) {
 			return $sql->errorCode();
-
+		}
+		
 		return true;
 
 	}
@@ -69,12 +75,7 @@ class UsersTable {
 
 	    $params = array(
             ':id'        =>$data['id'],
-            ':lastname'  =>$data['lastname'],
-            ':firstname' =>$data['firstname'],
-            ':phone'     =>$data['phone'],
-            ':email'     =>$data['email'],
-            ':office'    =>$data['office'],
-            ':title'     =>$data['title']
+            ':nickname'  =>$data['nickname']
 	    );
 	    return $params;
 	}

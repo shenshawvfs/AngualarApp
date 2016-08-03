@@ -11,9 +11,9 @@ class Database {
 	private  static $mysql_host = "localhost:3306";
 
 	// Edit these to match the db you created
-	private  static $mysql_user = "db_user";
-	private  static $mysql_pass = "db_pass";
-	private  static $mysql_db = "db_name";
+	private  static $mysql_user = "root";
+	private  static $mysql_pass = "";
+	private  static $mysql_db = "risk";
 
 	// block directly instantiating and cloning of the object, there can be only one.
 	private function __construct() {}

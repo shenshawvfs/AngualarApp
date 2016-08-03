@@ -10,23 +10,23 @@
 		.controller( 'LoginController', function( $scope, $state, LoginService ) {
 				    
 		    // local member variables              
-            var local = {
-            };
+            var local = { };
     	    
             // Public $scope variables that templates have access to.
     		var self = this;
     		
     		self.master =  {};
-    		self.username = "";
+    		self.nickname = "";
 		    self.id = "";    		
     		self.status = "off";
     		
     		
     	    self.authenticate = function( user ) {
-    	        
+    	            	        
     	        LoginService.authenticate( user )
     	            .then( function( obj ) {
-    	                self.username = obj.username;
+    	                
+    	                self.nickname = obj.nickname;
     	                self.id = obj.id;
     	                self.status = "on";
     	                
@@ -39,7 +39,7 @@
     	        LoginService.logoff()
     	            .then( function( obj ) {
     	            
-    	                self.username = "";
+    	                self.nickname = "";
     	                self.id = "";
     	                self.status = "off";
     	                
@@ -52,7 +52,7 @@
     	        LoginService.register( user )
     	            .then( function( obj ) {
     	            
-    	                self.username = obj.username;
+    	                self.nickname = obj.nickname;
     	                self.id = obj.id;
     	                self.status = "on";
     	                

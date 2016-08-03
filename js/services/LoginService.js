@@ -87,15 +87,16 @@
                       */ 
                         var response = obj.data;
                         self.id = response.id; 
-                        self.username = user.username;
+                        self.nickname = user.nickname;
                         
                         /*
                       * Then we craft some data and use our defered callback to let the
                       * original callen know that data is ready for them 
                       */
                         var authData = {
-                            username: self.username,
-                            id: self.id
+                            error:    0,
+                            id:       self.id,
+                            nickname: self.nickname
                         };
                         
                         /*

@@ -1,5 +1,6 @@
 <?php
 include '../AJAXServer.php';
+include '../UsersTable.php';
 
 class Server extends AJAXServer {
 	// ========================================================================
@@ -11,27 +12,37 @@ class Server extends AJAXServer {
 
 		// The 'action' requested is named for the folder this server lives in
 
-		$username = $request['name'];
-		$passwd = $request['passwd'];
+		$username = $request['nickname'];
 
-		// Authenticate with username and password
+		$response['id'] = 0; // User zero by default, will be updated.
+		$response['nickname'] = "unknown";
+		$response['error'] = 1;
 
+		$userTable = new UsersTable();
 
-		$response["id"] = password_hash( $passwd, PASSWORD_DEFAULT );
-		$response["error"] = 0;
-
-		$data = array(
-			'id'        =>$response['id'],
-			'lastname'  =>$username,
-			'firstname' =>"",
-			'phone'     =>"555-555-5555",
-			'email'     =>$username . "@vfs.com",
-			'office'    =>"101",
-			'title'     =>""
-		);
-		$userTable = UserTable();
-		$userTable.create( $data );
-
+		// First try and see if this user exists (by nickname) 
+		$result = $userTable->readByNickname( $username );
+		if (empty( $result )) {
+		
+			// If they don't exist, create them.		
+			$data = array(
+				'id'        =>$response['id'],
+				'nickname'  =>$username
+			);
+		
+			if ($userTable->create( $data )) {
+				
+				$response['nickname'] = $username;	
+				$response['error'] = 0;			
+			}
+			
+		} else {
+			
+			$response['id'] = $result[0]->id;
+			$response['nickname'] = $result[0]->nickname;
+			$response['error'] = 0;				
+		}
+		
 		return $response;
 	}
 }
