@@ -19,7 +19,7 @@ class AppViewController {
             intervalProvider: $interval
         }; 
         __private__.set( this, privateData );
-    
+
         this.title =  "App Title";
         this.author = "PGWM Students";
 
@@ -32,14 +32,14 @@ class AppViewController {
             info:    "partials/info.html"
         };
             
-        this.timer = new Timer( $interval, this.update ); 
+        this.timer = new Timer( $interval, this ); 
     }
 
     
     update( deltaMin, deltaSec, deltaMs, label ) {
         
         this.time = deltaMin.toString() + ":" + deltaSec.toString() + ":" + deltaMs.toString();
-        this.label = "Waited ";        
+        this.label = label;
     }
     
 }

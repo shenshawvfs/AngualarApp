@@ -7,8 +7,9 @@
             <input class="input login username" type="text" placeholder="nickname" ng-model="user.nickname"/>
             <br />
             <input class="input login submit" type="submit" placeholder="Login!" />
-            <button ng-if="login.status=='on'" type="button" placeholder="Logout" ng-click="login.logout()"/>Logout</button>
-                 
+            <span id="logout-container" ng-if="login.status=='on'">
+                <button type="button" placeholder="Logout" ng-click="login.logoff()"/>Logout</button>
+            </span>
         </form>
         
         <div>

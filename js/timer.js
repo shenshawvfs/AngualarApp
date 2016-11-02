@@ -12,13 +12,13 @@
 
 class Timer {
     
-    constructor( $interval, updateFunction ) {
+    constructor( $interval, timerOwner ) {
         
         let privateData = {
-            doUpdate:         updateFunction,
+            parent:         timerOwner,
             loop:             null,
             startTime:        new Date(),
-            intervalService: $interval
+            intervalProvider: $interval
         };
         __private__.set( this, privateData );
     
@@ -28,7 +28,7 @@ class Timer {
         this.time = "00:00:000";
 
         let m = privateData; 
-        m.doUpdate( 0, 0, 0, "Waiting...");
+        m.parent.update( 0, 0, 0, "Waiting...");
     }
     
     start() {                   
@@ -37,7 +37,7 @@ class Timer {
         if (m.loop != null)
             return;
             
-        m.loop = m.intervalService( () => {
+        m.loop = m.intervalProvider( () => {
             // ticks = 60 / sec so
             let m = __private__.get( this );
             let now = new Date();
@@ -47,7 +47,7 @@ class Timer {
             let deltaSec = Math.floor( (deltaTime - (deltaMin * 60000)) / 1000 );
             let deltaMs = Math.floor( deltaTime - (deltaMin * 60000) - (deltaSec * 1000) );
 
-            m.doUpdate( deltaMin, deltaSec, deltaMs, "Waited ");
+            m.parent.update( deltaMin, deltaSec, deltaMs, " Running...");
             
         }, 1000/60 );
     }
@@ -57,10 +57,10 @@ class Timer {
         let m = __private__.get( this );
         
         // Stop the timer, and nullify the loop so we can re-start.
-        m.intervalService.cancel( m.loop );
+        m.intervalProvider.cancel( m.loop );
         m.loop = null;
      
-        m.doUpdate( 0, 0, 0, "Waiting...");
+        m.parent.update( 0, 0, 0, "Waiting...");
     }
         
 }

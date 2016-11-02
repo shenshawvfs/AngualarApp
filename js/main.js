@@ -1,7 +1,7 @@
 /**
  * Angular Main Module
  * 
- * @copyright: (C) 2014-2015 Kibble Games Inc in cooperation with 
+ * @copyright: (C) 2014-2016 Kibble Games Inc in cooperation with 
  *                             Vancouver Film School.  
  *                             All Rights Reserved.
  * @author: Scott Henshaw
@@ -24,61 +24,7 @@ const __private__ = new WeakMap();
 angular.module('app.controllers',[]);
 angular.module('app.directives',[]);
 angular.module('app.services', []);
-/*
-class MenuController {
-    
-    constructor( $state ) {
-    
-        this.state = $state;
-        this.content = ['Home', 'Main'];    
-    }
-    
-    setPage( page ) {
-        
-        this.state.transitionTo( page );
-    }
-}
 
-
-// Routing by chaining the components for the ui.router module
-angular.module('app.controllers', ['ui.router'])
-    .config(['$stateProvider', ( $stateProvider ) => {        
-            $stateProvider
-                .state( 'Home', { url: '',      templateUrl: 'partials/home.html'})
-                .state( 'Main', { url: 'main',  templateUrl: 'partials/main.html'});
-        }])
-    .run(['$state', ( $state ) => { $state.transitionTo('Home'); }])
-    .controller('MenuController', ['$state', ( $state ) => { return new MenuController( $state ); }]);
-*/
-
-/* 
- * This is a special case closure below. Its to be used ONLY if 
- * another templating system is in place. Typically that would be
- * a server side templating system like Django or Jinga
- * 
-(function() {
- */
-    /*
-     * Override the Angular interpolation directive
-     * 
-     * [[ Angular brackets for angular
-     * {{ curly brackets for Django
-     * 
-     * override {{ $scope.value }} operator with [[ $scope.value ]]
-     * because we know this angular app is served from AppEngine with Django and
-     * we know Django uses the {{ templateVariable }} notation to do server side 
-     * templating
-     *  
-     */
-	/*
-	angular	.module('app')
-		.config( config, function config( $interpolateProvider ) {
-	    
-	    $interpolateProvider.startSymbol( '[[' );
-        $interpolateProvider.endSymbol( ']]' );	
-	}
-})();
-    */
 
 /* 
  * Declare the app itself and all the dependencies it relies on
