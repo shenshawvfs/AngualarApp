@@ -7,6 +7,10 @@
  * @author: Scott Henshaw
  * 
  */
+'use strict';
+
+const __private__ = new WeakMap();
+
 
 /* 
  * Module definitions
@@ -20,27 +24,32 @@
 angular.module('app.controllers',[]);
 angular.module('app.directives',[]);
 angular.module('app.services', []);
-
-//Routing
-angular.module('app.controllers', ['ui.router'])
-    .config(['$stateProvider', ( $stateProvider ) => {
-        
-        $stateProvider
-            .state( 'Home', { url: '',      templateUrl: 'partials/home.html'})
-            .state( 'Main', { url: 'main',  templateUrl: 'partials/main.html'});
-    }])
-    .run(['$state', ( $state ) => {
-        $state.transitionTo('Home'); 
-    }])
-    .controller('MenuController', ( $scope, $state ) => {
+/*
+class MenuController {
     
+    constructor( $state ) {
+    
+        this.state = $state;
         this.content = ['Home', 'Main'];    
-        this.setPage = function( page ) {
-            
-            $state.transitionTo( page );
-        };
-    });
+    }
+    
+    setPage( page ) {
+        
+        this.state.transitionTo( page );
+    }
+}
 
+
+// Routing by chaining the components for the ui.router module
+angular.module('app.controllers', ['ui.router'])
+    .config(['$stateProvider', ( $stateProvider ) => {        
+            $stateProvider
+                .state( 'Home', { url: '',      templateUrl: 'partials/home.html'})
+                .state( 'Main', { url: 'main',  templateUrl: 'partials/main.html'});
+        }])
+    .run(['$state', ( $state ) => { $state.transitionTo('Home'); }])
+    .controller('MenuController', ['$state', ( $state ) => { return new MenuController( $state ); }]);
+*/
 
 /* 
  * This is a special case closure below. Its to be used ONLY if 
