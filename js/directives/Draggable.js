@@ -3,7 +3,8 @@
  * 
  * Copyright 2014, Google, adapted for VFS Use  All Rights Reserved.
  */
-app.directive('ngDraggable', ['$document', function( $document ) {
+angular.module('app.directives')
+    .directive('ngDraggable', ['$document', function( $document ) {
     
     return function( scope, element, attr ) {
 

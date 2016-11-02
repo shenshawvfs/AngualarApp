@@ -23,21 +23,19 @@ angular.module('app.services', []);
 
 //Routing
 angular.module('app.controllers', ['ui.router'])
-    .config(['$stateProvider', function( $stateProvider ) {
+    .config(['$stateProvider', ( $stateProvider ) => {
         
         $stateProvider
             .state( 'Home', { url: '',      templateUrl: 'partials/home.html'})
             .state( 'Main', { url: 'main',  templateUrl: 'partials/main.html'});
     }])
-    .run(['$state', function( $state ) {
+    .run(['$state', ( $state ) => {
         $state.transitionTo('Home'); 
     }])
-    .controller('MenuController', function( $scope, $state ) {
+    .controller('MenuController', ( $scope, $state ) => {
     
-        var self = this;
-        self.content = ['Home', 'Main'];
-    
-        self.setPage = function( page ) {
+        this.content = ['Home', 'Main'];    
+        this.setPage = function( page ) {
             
             $state.transitionTo( page );
         };
@@ -49,8 +47,8 @@ angular.module('app.controllers', ['ui.router'])
  * another templating system is in place. Typically that would be
  * a server side templating system like Django or Jinga
  * 
- */
 (function() {
+ */
     /*
      * Override the Angular interpolation directive
      * 
@@ -70,18 +68,18 @@ angular.module('app.controllers', ['ui.router'])
 	    $interpolateProvider.startSymbol( '[[' );
         $interpolateProvider.endSymbol( ']]' );	
 	}
-	*/
 })();
+    */
 
 /* 
  * Declare the app itself and all the dependencies it relies on
  * This can later be used to add routing or other service providers.
  * Angular constructs to add modular functionality to an APP
- * 
  */
-var app = angular.module( 'app', [  
+var app = angular.module('app', [  
      'app.services',     // This is a module that we depend on.
      'app.directives',   // This is a module that we depend on.
      'app.controllers',   // This is a module that we depend on.
      'ui.router'
 ]);
+ 
