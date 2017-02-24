@@ -5,62 +5,40 @@
         <title>App!</title>
 
         <meta name="description" content="Angular App">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/style.css">
 
-        <!-- Load all the Angular components here, we assume they will load -->
-        <script src="//code.angularjs.org/1.4.7/angular.min.js"></script> 
-        <script src="//code.angularjs.org/1.4.7/angular-resource.min.js"></script> 
-        <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>        
+        <!-- Load all the Angular components here, we assume they will load 1.4.7-->
+        <script src="//code.angularjs.org/1.6.2/angular.js"></script>
+        <script src="//code.angularjs.org/1.6.2/angular-resource.min.js"></script>
+        <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
     </head>
 
-   	<body ng-controller="AppViewController as view">
+   	<body ng-controller="AppViewController as app">
         <div class="wrapper">
             <div>
-                <h1 id="title">{{view.title}}</h1>
-                <h3>by {{view.author}}</h3>
+                <h1 id="title">{{app.vm.title}}</h1>
+                <h3>by {{app.vm.author}}</h3>
             </div>
-            
-            <div id='login' ng-controller="LoginController as login" >
-                
-                <ng-include src="'partials/login.html'"></ng-include>
-                
-                <form novalidate class="simple-form">
-                    <!--  
-                    Angular used the HTML much more, adding directives to enhance and "program"
-                    it. Typical is a form where we declare and use a model to contain temp data
-                    
-                    The 'user' is a js object, as if declaed:
-                    
-                        var user = { name: "", email: "" };
-                     -->
-                    Name: <input type="text" ng-model="user.name" placeholder="{{login.username}}"/>
-                    E-mail: <input type="email" ng-model="user.email" placeholder="email@host.com"/>
-                    <button ng-click="login.reset(user)">Reset</button>
-                    <button ng-click="login.update(user)">Save</button>
-                    <button ng-click="login.authenticate(user)">AJAX Me</button>
-                </form>
-                
+
+            <pg-login></pg-login>
+
+            <div id="app-area">
+                <h3>Routing with ui-router</h3>
+                Pulling in partials client side templating at run-time
+
                 <div id="debug-data">
                     <pre>form = {{user|json}}</pre>
                     <pre>master = {{login.master|json}}</pre>
                 </div>
-                
-                <div id="timer-demo">
-                    <div id="timer">{{view.time}} {{view.label}}</div> 
-                    <button ng-click="view.timer.start()">Start</button>
-                    <button ng-click="view.timer.stop()">Stop</button>
-                </div>
-            </div>
-            
-            <div id="app-area">
-                <h3>Routing with ui-router</h3>
-                Pulling in partials client side templating at run-time
+
+                <pg-timer></pg-timer>
+
                 <aside class="sidebar" ng-controller="MenuController as sideBar">
                     <ul>
-                        <li ng-repeat="page in sideBar.content" class="menuitem"> 
+                        <li ng-repeat="page in sideBar.content" class="menuitem">
                             <button ng-click="sideBar.setPage( page )">{{page}}</button>
                         </li>
                     </ul>
@@ -68,38 +46,54 @@
 
                 <div class="current-screen" >
                     <div id="screen" class="app-screen" >
-        
+
                         <!-- UI Module View Routing dynamically loads partial views here -->
                         <div ui-view></div>
-    
+
                     </div>
                 </div>
                 <div class='clear'></div>
-            </div>            
-            
+            </div>
+
         </div>
-        
+
         <section id="scripts">
-            <!-- 
-             List the main scripts here in order, 
+            <!--
+             List the main scripts here in order,
                 1. module declarations and routing
                 2. directives that the HTML will use
                 3. services that the controllers will use
                 4. controllers
              -->
-            <script src="js/main.js"></script>
-            <script src="js/controllers/Menu.js"></script>
-
+            <script src="js/index.js"></script>
             <script src="js/timer.js"></script>
 
-            <script src="js/directives/Draggable.js"></script>
-            <script src="js/directives/HideMe.js"></script>
-            
             <script src="js/services/LoginService.js"></script>
-                    
+            <script src="js/controllers/Menu.js"></script>
+            <script src="js/components/Timer.js"></script>
             <script src="js/controllers/App.js"></script>
-            <script src="js/controllers/Login.js"></script>
-            
         </section>
     </body>
+    <!--
+    <div id='login' ng-controller="LoginController as login" >
+
+        <ng-include src="'partials/login.html'"></ng-include>
+
+        <form novalidate class="simple-form">
+
+            Angular used the HTML much more, adding directives to enhance and "program"
+            it. Typical is a form where we declare and use a model to contain temp data
+
+            The 'user' is a js object, as if declaed:
+
+                var user = { name: "", email: "" };
+
+            Name: <input type="text" ng-model="user.name" placeholder="{{login.username}}"/>
+            E-mail: <input type="email" ng-model="user.email" placeholder="email@host.com"/>
+            <button ng-click="login.reset(user)">Reset</button>
+            <button ng-click="login.update(user)">Save</button>
+            <button ng-click="login.authenticate(user)">AJAX Me</button>
+        </form>
+    </div>
+    -->
 </html>
