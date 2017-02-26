@@ -2,18 +2,18 @@
 <section id="welcome">
     <div id="login-server" class="dialog">
         <h3>Welcome! Please Login!</h3>
-        <form ng-submit="login.authenticate(user)" ng-model-options="{debounce:500}">
-            
-            <input class="input login username" type="text" placeholder="nickname" 
-                 ng-model="user.nickname"/>
+        <form ng-submit="$ctrl.authenticate(user)" ng-model-options="{debounce:500}">
+
+            <input class="input login username" type="text" placeholder="nickname" ng-model="user.nickname"/>
             <br />
             <input class="input login submit" type="submit" placeholder="Login!" />
-            <button type="button" placeholder="Logout" ng-if="login.status=='on'" ng-click="login.logout()"/>Logout</button>
-                 
+            <span id="logout-container" ng-if="$ctrl.status=='on'">
+                <button type="button" placeholder="Logout" ng-click="$ctrl.logoff()"/>Logout</button>
+            </span>
         </form>
-        
+
         <div>
-        Logged {{login.status}} <span ng-if="login.status=='on'"> as {{login.nickname}} id: {{login.id}}</span>
-        </div>    
+        Logged {{login.status}} <span ng-if="$ctrl.status=='on'"> as {{login.nickname}} id: {{login.id}}</span>
+        </div>
     </div>
 </section>

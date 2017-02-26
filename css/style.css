@@ -17,12 +17,6 @@ body,div {
     font-family: "Helvetica";
 }
 
-/* Styles for illustrating the example */
-a {
-    color:#FFF;
-    text-decoration:underline;
-}
-
 div > * {
     margin: 10px;
 }
@@ -32,22 +26,50 @@ div {
     background-color: #999;
 }
 
+a {
+    color:#FFF;
+    text-decoration:underline;
+}
+
 button {
     border-radius: 2px;
     font-weight: 700;
     padding: 0.5em;
 }
 
+input {
+    height: 1.4em;
+}
+
 .debug {
     border:1px dashed red;
-    z-index: 6000;    
+    z-index: 6000;
 }
 
 .clear { clear: both; }
 
+li.button {
+    width:  20em;
+}
+
+.list-block {
+    list-style: none;
+    display: flex;
+    width: 100%;
+}
+
+.list-block li {
+    flex-grow: 1;
+
+}
+
 .menuitem {
     list-style-type: none;
     margin: 2px;
+}
+
+.menuitem button {
+    min-width: 10em;
 }
 
 .dialog {
@@ -82,15 +104,6 @@ button {
 }
 
 .simple-form { }
-
-
-li.button {
-    width:  20em;
-}
-
-.menuitem button {
-    min-width: 10em;
-}
 
 #home-area {
     padding-top:  0em;
