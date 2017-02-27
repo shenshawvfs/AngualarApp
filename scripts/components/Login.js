@@ -11,13 +11,13 @@ class LoginComponentController {
 
     constructor( $state, LoginService ) {
 
-        let privateData = {
+        let myData = {
 
             nickname: "nobody",
             id:       0,
             status:   "off"
         };
-        __private__.set( this, privateData );
+        __private__.set( this, myData );
 
         this.state = $state
         this.login = LoginService;
@@ -73,16 +73,8 @@ class LoginComponentController {
 
 /*
 template:
+    OR
 templateUrl:  The HTML bit.
-
-restrict  => String of subset of 'EACM' which restricts the directive
-              to a specific directive declaration style. If omitted,
-              the defaults (elements and attributes) are used.
-
-            E - Element name (default): <my-directive></my-directive>
-            A - Attribute (default): <div my-directive="exp"></div>
-            C - Class: <div class="my-directive: exp;"></div>
-            M - Comment: <!-- directive: my-directive exp -->
 
 bindings   Control the data binding between template variables and the controller with
             the binding attribute to the options literal

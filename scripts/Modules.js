@@ -21,10 +21,9 @@ const __private__ = new WeakMap();
  *
  */
 let module = {
+    components: angular.module('app.components',[]),
     controllers: angular.module('app.controllers',[]),
     directives: angular.module('app.directives',[]),
-
-    components: angular.module('app.components',[]),
     services: angular.module('app.services', [])
 };
 
@@ -35,8 +34,8 @@ let module = {
  */
 var app = angular.module('app', [
      'app.services',     // This is a module that we depend on.
-     'app.components',   // This is a module that we depend on.
      'app.directives',   // This is a module that we depend on.
+     'app.components',   // This is a module that we depend on.
      'app.controllers',  // This is a module that we depend on.
      'ui.router'
 ]);
