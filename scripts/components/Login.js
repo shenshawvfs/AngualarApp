@@ -27,14 +27,15 @@ class LoginComponentController {
         };
     }
 
-    authenticate(user) {
+    authenticate( user ) {
 
+        angular.copy( user, this.vm.master );
         this.login.authenticate( user )
             .then( ( obj ) => {
 
-                $ctrl.nickname = obj.nickname;
-                $ctrl.id = obj.id;
-                $ctrl.status = "on";
+                this.nickname = obj.nickname;
+                this.id = obj.id;
+                this.status = "on";
 
                 this.state.transitionTo('Home');
         });
@@ -42,25 +43,26 @@ class LoginComponentController {
 
     logoff() {
 
+        this.user = angular.copy( this.vm.master );
         this.login.logoff()
             .then( ( obj ) => {
 
-                this.bindings.nickname = "";
-                this.bindings.id = "";
-                this.bindings.status = "off";
+                this.nickname = "";
+                this.id = "";
+                this.status = "off";
 
                 this.state.transitionTo('Root');
             });
     }
 
-    register(user) {
+    register( user ) {
 
         this.login.register( user )
             .then( ( obj ) => {
 
-                $ctrl.nickname = obj.nickname;
-                $ctrl.id = obj.id;
-                $ctrl.status = "on";
+                this.nickname = obj.nickname;
+                this.id = obj.id;
+                this.status = "on";
 
                 this.state.transitionTo( 'Home' );
 
@@ -100,7 +102,7 @@ let LoginComponentOptions = {
         count:    "=",
         nickname: "<",
         id:       "<",
-        status:   "="
+        status:   "@"
     }
 };
 

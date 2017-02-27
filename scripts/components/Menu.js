@@ -13,9 +13,11 @@ class MenuComponentController {
 
         this.state = $state;
         this.content = ['Root', 'Home', 'Main'];
+        this.currentPage = 'Root';
     }
 
     setPage( page ) {
+        
         this.state.transitionTo( page );
         this.currentPage = page;
     }
@@ -55,7 +57,7 @@ angular.module('app.components', ['ui.router'])
         let homeState = {  // now user is logged in
             name: 'Home',
             url:  '/home',
-            templateUrl: 'partials/main.html'
+            templateUrl: 'partials/home.html'
         };
         $stateProvider.state( homeState );
 
@@ -68,6 +70,6 @@ angular.module('app.components', ['ui.router'])
     }])
     .run(['$state', function($state) {
 
-        $state.transitionTo('Home');
+        $state.transitionTo('Root');
     }])
     .component('pgMenu', MenuComponentOptions );

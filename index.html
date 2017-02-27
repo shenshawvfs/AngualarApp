@@ -31,14 +31,14 @@
 
                     <pg-timer></pg-timer>
 
-                    <pg-menu></pg-menu>                    
+                    <pg-menu></pg-menu>
 
                 </div>
 
+                <h3>Routing with ui-router</h3>
                 <div class="current-screen" width="65%">
-                    <h3>Routing with ui-router</h3>
-                        <div id="screen" class="app-screen" >
-                        Pulling in partials client side templating at run-time
+
+                    <div id="screen" class="app-screen" >
 
                         <!-- UI Module View Routing dynamically loads partial views here -->
                         <div ui-view></div>
@@ -58,16 +58,16 @@
                 3. services that the controllers will use
                 4. controllers
              -->
-            <script src="js/Modules.js"></script>
+            <script src="scripts/Modules.js"></script>
 
-            <script src="js/services/LoginService.js"></script>
-            <script src="js/services/TimerService.js"></script>
+            <script src="scripts/services/LoginService.js"></script>
+            <script src="scripts/services/TimerService.js"></script>
 
-            <script src="js/components/Menu.js"></script>
-            <script src="js/components/Login.js"></script>
-            <script src="js/components/Timer.js"></script>
+            <script src="scripts/components/Menu.js"></script>
+            <script src="scripts/components/Login.js"></script>
+            <script src="scripts/components/Timer.js"></script>
 
-            <script src="js/App.js"></script>
+            <script src="scripts/App.js"></script>
         </section>
     </body>
 </html>

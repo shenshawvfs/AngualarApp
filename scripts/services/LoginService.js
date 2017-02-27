@@ -76,8 +76,12 @@ class LoginService {
                  * so all other modules can access it.
                  */
                 let response = obj.data;
-                this.id = response.id;
-                this.nickname = user.nickname;
+
+                if (response.error >= 0) {
+
+                    this.id = response.id;
+                    this.nickname = user.nickname;
+                }
 
                 /*
                  * Then we craft some data and use our defered callback to let the
@@ -93,7 +97,7 @@ class LoginService {
                  *  now send our data along to the original caller's
                  *  ".then" callback handler
                  */
-                clientCallback.resolve(authData);
+                clientCallback.resolve( authData );
             });
 
         // Return a promise here so we can hook our controller up to get
@@ -111,7 +115,7 @@ class LoginService {
             .then((obj) => {
 
                 let response = obj.data;
-                clientCallback.resolve(response);
+                clientCallback.resolve( response );
             });
 
         // Return a promise here so we can hook our controller up to get
@@ -129,7 +133,7 @@ class LoginService {
 
         var params = m.httpSerializerProvider(user);
         m.httpProvider.post('server/register/', params)
-            .then((obj) => {
+            .then( ( obj ) => {
                 //------------------------------------------------------------
                 // Handle the successful result of an AJAX request
                 //
@@ -144,8 +148,11 @@ class LoginService {
                  */
                 let response = obj.data;
 
-                if (response.errCode < 0) // negative is bad, don't trust the result
+                if (response.error < 0) {// negative is bad, don't trust the result
+                // Do something with the data...
+                    console.log("Response success: Data-> " + response.data);
                     return;
+                }
 
                 // Do something with the data...
                 console.log("Response success: Data-> " + response.data);
@@ -175,7 +182,7 @@ angular.module('app.services')
          * PHP expects commands and params in the form x-ww-form-urlencoded
          * i.e. "?p1=v1&p2=v2" etc.
          *
-         * so we have to change the header to tepp the server how to interpret the
+         * so we have to change the header to tell the server how to interpret the
          * incoming data.
          *
          */
