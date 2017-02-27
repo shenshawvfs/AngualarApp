@@ -179,11 +179,13 @@ angular.module('app.services')
          * incoming data.
          *
          */
-        $httpProvider.defaults.headers.post['Content-Type'] =
-            'application/x-www-form-urlencoded;charset=utf-8';
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     })
     .service('LoginService',
-        ['$http', '$q', '$httpParamSerializerJQLike', function( $http, $q, $httpParamSerializerJQLike ) {
+        ['$http', '$q', '$httpParamSerializerJQLike',
+            function( $http, $q, $httpParamSerializerJQLike ) {
 
-            return new LoginService($http, $q, $httpParamSerializerJQLike);
-        }]);
+                return new LoginService($http, $q, $httpParamSerializerJQLike);
+            }
+        ]
+    );

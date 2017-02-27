@@ -12,7 +12,7 @@ class MenuComponentController {
     constructor($state) {
 
         this.state = $state;
-        this.content = ['Home', 'Main'];
+        this.content = ['Root', 'Home', 'Main'];
     }
 
     setPage( page ) {
@@ -34,7 +34,6 @@ let MenuComponentOptions = {
             </ul>
         </div>`,
     controller: ['$state', MenuComponentController ],
-    // restrict: 'EA',
     bindings: {
         currentPage: "@"
     }
@@ -42,26 +41,33 @@ let MenuComponentOptions = {
 
 
 // Routing by chaining the components for the ui.router module
-angular.module('app.controllers', ['ui.router'])
+angular.module('app.components', ['ui.router'])
     .config(['$stateProvider', function( $stateProvider ) {
 
-        let homeState = {
-            name: 'Home',
+        let rootState = {
+            name: 'Root',
             url:  '/',
             // controller: 'HomeController as $ctrl';
-            templateUrl: 'partials/home.html'
+            templateUrl: 'partials/index.html'
         };
+        $stateProvider.state( rootState );
+
+        let homeState = {  // now user is logged in
+            name: 'Home',
+            url:  '/home',
+            templateUrl: 'partials/main.html'
+        };
+        $stateProvider.state( homeState );
 
         let mainState = {
             name: 'Main',
             url:  '/main',
             templateUrl: 'partials/main.html'
         };
-
-        $stateProvider.state( homeState );
         $stateProvider.state( mainState );
     }])
     .run(['$state', function($state) {
+
         $state.transitionTo('Home');
     }])
     .component('pgMenu', MenuComponentOptions );

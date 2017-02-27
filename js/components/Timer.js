@@ -1,15 +1,22 @@
+/**
+ * @name VFS Angular Menu Component
+ *
+ * @copyright (C) 2014-2015 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
+ * @author Scott Henshaw
+ *
+ */
+'use_strict';
 
+class TimerComponentController {
 
-class TimerController {
-
-    constructor( $scope, $element, $attrs ) {
+    constructor( $element, $attrs, TimerService ) {
 
         //this.interval = $interval;
-        this.timer = {}//new Timer( $interval, this );
+        this.timer = TimerService;
     }
 
     update() {
-        this.onUpdate({time: this.timeString(0,0,0)})
+
     }
 
     timeString( deltaMin, deltaSec, deltaMs, label ) {
@@ -23,14 +30,19 @@ class TimerController {
     stopTimer() {}
 }
 
+// Options for the timer component
+let TimerComponentOptions = {
+
+    // restrict: 'EA',
+    templateUrl: "partials/timer.html",
+    controller: ['$element','$attrs', 'TimerService', TimerComponentController ],
+    bindings: {
+        label: '<',
+        time: '<',
+        onUpdate: '&'
+    }
+};
+
 
 angular.module('app.components')
-    .component('pgTimer', {
-            templateUrl: 'partials/timer.html',
-            controller: TimerController,
-            bindings: {
-                label: '<',
-                time: '<',
-                onUpdate: '&'
-            }
-        });
+    .component('pgTimer', TimerComponentOptions );

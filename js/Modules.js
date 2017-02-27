@@ -1,5 +1,5 @@
 /**
- * Angular Main Module
+ * Angular Module Definitions
  *
  * @copyright: (C) 2014-2016 Kibble Games Inc in cooperation with
  *                             Vancouver Film School.
@@ -11,7 +11,6 @@
 
 const __private__ = new WeakMap();
 
-
 /*
  * Module definitions
  *
@@ -21,11 +20,12 @@ const __private__ = new WeakMap();
  * angular system.
  *
  */
-let modules = {
-    control: angular.module('app.controllers',[]),
-    component: angular.module('app.components',[]),
-    directive: angular.module('app.directives',[]),
-    service: angular.module('app.services', [])
+let module = {
+    controllers: angular.module('app.controllers',[]),
+    directives: angular.module('app.directives',[]),
+
+    components: angular.module('app.components',[]),
+    services: angular.module('app.services', [])
 };
 
 /*

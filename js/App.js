@@ -9,7 +9,7 @@
 
 //import { Timer } from 'timer';
 
-class AppViewController {
+class AppController {
 
     constructor( TimerService, LoginService) {
 
@@ -17,7 +17,7 @@ class AppViewController {
             id: "",
             loop: null,
         };
-        __private__.set(this, privateData);
+        __private__.set( this, privateData );
 
         this.timer = TimerService;
         this.login = LoginService;
@@ -36,6 +36,6 @@ class AppViewController {
 // List the dependent services here comma separated
 // Create the controller and inject the dependencies, return the controller referenced by name
 angular.module('app.controllers')
-    .controller('AppViewController', ['TimerService', 'LoginService', function( TimerService, LoginService ) {
-        return new AppViewController( TimerService, LoginService );
+    .controller('AppController', ['TimerService', 'LoginService', function( TimerService, LoginService ) {
+        return new AppController( TimerService, LoginService );
     }]);

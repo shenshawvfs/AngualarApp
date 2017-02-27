@@ -15,5 +15,12 @@
         <div>
         Logged {{login.status}} <span ng-if="$ctrl.status=='on'"> as {{login.nickname}} id: {{login.id}}</span>
         </div>
+
+
+        <div id="debug-data">
+            <pre>form = {{user|json}}</pre>
+            <pre>master = {{$ctrl.master|json}}</pre>
+        </div>
+
     </div>
 </section>

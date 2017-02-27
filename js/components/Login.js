@@ -13,6 +13,9 @@ class LoginComponentController {
 
         let privateData = {
 
+            nickname: "nobody",
+            id:       0,
+            status:   "off"
         };
         __private__.set( this, privateData );
 
@@ -22,13 +25,10 @@ class LoginComponentController {
         this.vm = {
             master:  {}
         };
-        //this.nickname = $ctrl.nickname;
-        //this.id = $ctrl.id;
-        //this.status = $ctrl.status
     }
 
     authenticate(user) {
-        /*
+
         this.login.authenticate( user )
             .then( ( obj ) => {
 
@@ -36,12 +36,12 @@ class LoginComponentController {
                 $ctrl.id = obj.id;
                 $ctrl.status = "on";
 
-                //this.state.transitionTo('Main');
-        });*/
+                this.state.transitionTo('Home');
+        });
     }
 
     logoff() {
-        /*
+
         this.login.logoff()
             .then( ( obj ) => {
 
@@ -49,12 +49,12 @@ class LoginComponentController {
                 this.bindings.id = "";
                 this.bindings.status = "off";
 
-                //this.state.transitionTo('Home');
-            }); */
+                this.state.transitionTo('Root');
+            });
     }
 
     register(user) {
-        /*
+
         this.login.register( user )
             .then( ( obj ) => {
 
@@ -62,9 +62,9 @@ class LoginComponentController {
                 $ctrl.id = obj.id;
                 $ctrl.status = "on";
 
-                //this.state.transitionTo( 'Main' );
+                this.state.transitionTo( 'Home' );
 
-            });*/
+            });
     }
 }
 
@@ -96,7 +96,6 @@ let LoginComponentOptions = {
 
     templateUrl: 'partials/login.html',
     controller: ['$state', 'LoginService', LoginComponentController ],
-    // restrict: 'EA',
     bindings: {
         count:    "=",
         nickname: "<",
