@@ -29,8 +29,11 @@ class AppController {
 
 }
 
+/* -------------------------------------------------------------------------- */
+// MAIN - start the whole thing off by creating the AppController
 // Define the routing for the app using the UI router.
-angular.module('app.components', ['ui.router'])
+
+angular.module('app.controllers', ['ui.router'])
     .config(['$stateProvider', function( $stateProvider ) {
 
         let rootState = {
@@ -58,13 +61,7 @@ angular.module('app.components', ['ui.router'])
     .run(['$state', function($state) {
 
         $state.transitionTo('Root');
-    }]);
-
-
-/* -------------------------------------------------------------------------- */
-// MAIN - start the whole thing off by creating the AppController
-
-angular.module('app.controllers')
+    }])
     .controller('AppController', function() {
 
         return new AppController( TimerService, LoginService );

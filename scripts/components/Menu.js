@@ -17,7 +17,7 @@ class MenuComponentController {
     }
 
     setPage( page ) {
-        
+
         this.state.transitionTo( page );
         this.currentPage = page;
     }
@@ -41,35 +41,5 @@ let MenuComponentOptions = {
     }
 };
 
-
-// Routing by chaining the components for the ui.router module
-angular.module('app.components', ['ui.router'])
-    .config(['$stateProvider', function( $stateProvider ) {
-
-        let rootState = {
-            name: 'Root',
-            url:  '/',
-            // controller: 'HomeController as $ctrl';
-            templateUrl: 'partials/index.html'
-        };
-        $stateProvider.state( rootState );
-
-        let homeState = {  // now user is logged in
-            name: 'Home',
-            url:  '/home',
-            templateUrl: 'partials/home.html'
-        };
-        $stateProvider.state( homeState );
-
-        let mainState = {
-            name: 'Main',
-            url:  '/main',
-            templateUrl: 'partials/main.html'
-        };
-        $stateProvider.state( mainState );
-    }])
-    .run(['$state', function($state) {
-
-        $state.transitionTo('Root');
-    }])
+angular.module('app.components')
     .component('pgMenu', MenuComponentOptions );

@@ -7,16 +7,6 @@
 class Draggable {
 
     constructor() {
-
-        /** @memberOf ngDraggable.private */
-        let myData = {
-            startX: 0,
-            startY: 0,
-            x:      0,
-            y:      0
-        };
-        __private__.set( this, myData )
-
         /*
         template:
         templateUrl:  The HTML bit.
@@ -34,15 +24,25 @@ class Draggable {
         */
         this.template = "";   // Directive HTML template if applicable
         this.restrict = 'A';  // standard directive object restrict attribute
-        this.scope = {};      //  config options
+
+        let myData = {
+            startX: 0,
+            startY: 0,
+            x:      0,
+            y:      0
+        };
+        __private__.set( this, myData );
     }
 
     controller() {
-
+        // ok something interactive here???
     }
+
 
     compile( tElement, tAttrs ) {
         /*
+
+
         tElem, tAttrs = Template DOM before angular substitution
         optional compile function, called as Angular traverses the dom
         top to bottom
@@ -50,9 +50,21 @@ class Draggable {
         Use to change the template element i.e pg-draggable before
         Angular has an instance and scope.
         */
+        let a = 3; // test line
+
+        tElement.css({
+            position: 'relative',
+            border: '1px dashed blue',
+            backgroundColor: 'lightgrey',
+            cursor: 'pointer',
+        });
+
+        // if compile() exists it must return the link method
+        return this.link;
     }
 
-    link( scope, iElem, iAttrs ) {
+
+    link( scope, iElement ) { // , iAttrs, controller, transcludeFn ) {
         /*
         iElem, iAttrs = Template DOM AFTER angular substitution
         aka post-link function,
@@ -65,44 +77,40 @@ class Draggable {
 
         scope is provided, as this. ???
         */
-        iElem.css({
+        let my = __private__.get( this );
+
+        let childElement = angular.element( iElement[0].children[0] );
+
+        childElement.css({
             position: 'relative',
             border: '1px solid red',
             backgroundColor: 'lightgrey',
             cursor: 'pointer'
         });
 
-        this.initHandlers( iElem );
-    }
-
-    // Directive specific methods.
-    initHandlers( element ) {
-        // TODO - change this Holding tank to somethign that works.
-        let my = __private__.get( this );
-
-        this.addEventListener('mousedown', ( event ) => {
+        childElement.on('mousedown', ( event ) => {
 
             // Prevent default dragging of selected content
             event.preventDefault();
-            my.startX = event.pageX - x;
-            my.startY = event.pageY - y;
+            my.startX = event.pageX - my.x;
+            my.startY = event.pageY - my.y;
 
-            element.addEventListener('mousemove', ( event ) => {
+            childElement.on('mousemove', ( event ) => {
 
                 let my = __private__.get( this );
 
                 my.y = event.pageY - my.startY;
                 my.x = event.pageX - my.startX;
-                element.css({ top: `${my.y}px`, left: `${my.x}px`});
-            );
+                childElement.css({ top: `${my.y}px`, left: `${my.x}px`});
+            });
 
-            element.addEventListener('mouseup', ( event ) => {
+            childElement.on('mouseup', ( event ) => {
 
                 let my = __private__.get( this );
 
-                element.removeEventListener('mousemove');
-                element.removeEventListener('mouseup');
-            } );
+                childElement.off('mousemove');
+                childElement.off('mouseup');
+            });
         });
     }
 }
