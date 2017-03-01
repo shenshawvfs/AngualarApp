@@ -13,7 +13,7 @@ class Database {
 	// Edit these to match the db you created
 	private  static $mysql_user = "root";
 	private  static $mysql_pass = "";
-	private  static $mysql_db = "risk";
+	private  static $mysql_db = "demo";
 
 	// block directly instantiating and cloning of the object, there can be only one.
 	private function __construct() {}

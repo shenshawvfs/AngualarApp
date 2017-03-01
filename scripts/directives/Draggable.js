@@ -41,8 +41,6 @@ class Draggable {
 
     compile( tElement, tAttrs ) {
         /*
-
-
         tElem, tAttrs = Template DOM before angular substitution
         optional compile function, called as Angular traverses the dom
         top to bottom
@@ -50,14 +48,6 @@ class Draggable {
         Use to change the template element i.e pg-draggable before
         Angular has an instance and scope.
         */
-        let a = 3; // test line
-
-        tElement.css({
-            position: 'relative',
-            border: '1px dashed blue',
-            backgroundColor: 'lightgrey',
-            cursor: 'pointer',
-        });
 
         // if compile() exists it must return the link method
         return this.link;
@@ -78,38 +68,61 @@ class Draggable {
         scope is provided, as this. ???
         */
         let my = __private__.get( this );
+        let draggableElement = angular.element( iElement[0].children[0] );
 
-        let childElement = angular.element( iElement[0].children[0] );
+        draggableElement.on('mouseover', ( event ) => {
 
-        childElement.css({
-            position: 'relative',
-            border: '1px solid red',
-            backgroundColor: 'lightgrey',
-            cursor: 'pointer'
+            angular.element( event.target ).css({
+
+                position: 'relative',
+                border: '1px dashed red',
+                cursor: 'pointer'
+            });
         });
 
-        childElement.on('mousedown', ( event ) => {
+        draggableElement.on('mouseout', ( event ) => {
+
+            angular.element( event.target ).css({
+
+                position: 'relative',
+                border: 'none',
+                cursor: 'default'
+            });
+        });
+
+        draggableElement.on('mousedown', ( event ) => {
 
             // Prevent default dragging of selected content
             event.preventDefault();
+            let ngElement = angular.element( event.target );
+
             my.startX = event.pageX - my.x;
             my.startY = event.pageY - my.y;
+            my.zValue = ngElement.css('z-index');
 
-            childElement.on('mousemove', ( event ) => {
+            ngElement.css('z-index', 10000 );
+            ngElement.on('mousemove', ( event ) => {
 
                 let my = __private__.get( this );
 
                 my.y = event.pageY - my.startY;
                 my.x = event.pageX - my.startX;
-                childElement.css({ top: `${my.y}px`, left: `${my.x}px`});
+                ngElement.css({ top: `${my.y}px`, left: `${my.x}px`});
             });
 
-            childElement.on('mouseup', ( event ) => {
+            ngElement.on('mouseup', ( event ) => {
 
                 let my = __private__.get( this );
 
-                childElement.off('mousemove');
-                childElement.off('mouseup');
+                ngElement.css('z-index',my.zValue );
+                ngElement.off('mousemove');
+                ngElement.off('mouseup');
+
+                // reset the values.
+                my.startX = 0;
+                my.startY = 0;
+                my.x =      0;
+                my.y =      0;
             });
         });
     }
