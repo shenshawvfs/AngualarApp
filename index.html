@@ -10,10 +10,6 @@
 
         <link rel="stylesheet" href="css/style.css">
 
-        <!-- Load all the Angular components here, we assume they will load 1.4.7-->
-        <script src="//code.angularjs.org/1.6.2/angular.js"></script>
-        <script src="//code.angularjs.org/1.6.2/angular-resource.js"></script>
-        <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
     </head>
 
    	<body ng-controller="AppController as app">
@@ -23,26 +19,17 @@
                 <h3>by {{app.vm.author}}</h3>
             </div>
 
-            <pg-login pg-draggable></pg-login>
-
             <div id="app-area">
 
                 <div id="sidebar" width="30%">
-
-                    <pg-timer pg-draggable></pg-timer>
-
-                    <pg-menu pg-draggable></pg-menu>
-
+                    <pg-timer></pg-timer>
+                    <pg-menu></pg-menu>
                 </div>
 
-                <h3>Routing with ui-router</h3>
                 <div class="current-screen" width="65%">
-
                     <div id="screen" class="app-screen" >
-
                         <!-- UI Module View Routing dynamically loads partial views here -->
                         <div ui-view></div>
-
                     </div>
                 </div>
                 <div class='clear'></div>
@@ -51,6 +38,11 @@
         </div>
 
         <section id="scripts">
+            <!-- Load all the Angular components here, we assume they will load 1.4.7-->
+            <script src="//code.angularjs.org/1.6.2/angular.js" defer></script>
+            <script src="//code.angularjs.org/1.6.2/angular-resource.js" defer></script>
+            <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js" defer></script>
+
             <!--
              List the main scripts here in order,
                 1. module declarations and routing
@@ -58,18 +50,17 @@
                 3. services that the controllers will use
                 4. controllers
              -->
-            <script src="scripts/Modules.js"></script>
+            <script src="scripts/Modules.js" defer></script>
 
-            <script src="scripts/services/LoginService.js"></script>
-            <script src="scripts/services/TimerService.js"></script>
+            <script src="scripts/services/TimerService.js" defer></script>
 
-            <script src="scripts/directives/Draggable.js"></script>
+            <script src="scripts/directives/Draggable.js" defer></script>
 
-            <script src="scripts/components/Menu.js"></script>
-            <script src="scripts/components/Login.js"></script>
-            <script src="scripts/components/Timer.js"></script>
+            <script src="scripts/components/Menu.js" defer></script>
+            <script src="scripts/components/Login.js" defer></script>
+            <script src="scripts/components/Timer.js" defer></script>
 
-            <script src="scripts/App.js"></script>
+            <script src="scripts/App.js" defer></script>
         </section>
     </body>
 </html>

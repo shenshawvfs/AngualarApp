@@ -11,7 +11,7 @@
 
 class AppController {
 
-    constructor( TimerService, LoginService) {
+    constructor( TimerService ) {
 
         let myData = {
             id: "",
@@ -36,13 +36,13 @@ class AppController {
 angular.module('app.controllers', ['ui.router'])
     .config(['$stateProvider', function( $stateProvider ) {
 
-        let rootState = {
-            name: 'Root',
+        let loginState = {
+            name: 'Login',
             url:  '/',
             templateUrl: 'partials/index.html'
             // controller: 'HomeController as $ctrl';
         };
-        $stateProvider.state( rootState );
+        $stateProvider.state( loginState );
 
         let homeState = {  // now user is logged in
             name: 'Home',
@@ -60,9 +60,9 @@ angular.module('app.controllers', ['ui.router'])
     }])
     .run(['$state', function($state) {
 
-        $state.transitionTo('Root');
+        $state.transitionTo('Login');
     }])
     .controller('AppController', function() {
 
-        return new AppController( TimerService, LoginService );
+        return new AppController( TimerService );
     });

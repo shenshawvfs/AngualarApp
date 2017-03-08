@@ -12,8 +12,8 @@ class MenuComponentController {
     constructor($state) {
 
         this.state = $state;
-        this.content = ['Root', 'Home', 'Main'];
-        this.currentPage = 'Root';
+        this.content = ['Login', 'Home', 'Main'];
+        this.currentPage = 'Login';
     }
 
     setPage( page ) {

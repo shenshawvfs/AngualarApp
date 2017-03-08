@@ -9,7 +9,7 @@
 
 class LoginComponentController {
 
-    constructor( $state, LoginService ) {
+    constructor( $state ) {
 
         let myData = {
 
@@ -20,7 +20,6 @@ class LoginComponentController {
         __private__.set( this, myData );
 
         this.state = $state
-        this.login = LoginService;
 
         this.vm = {
             master:  {}
@@ -30,43 +29,17 @@ class LoginComponentController {
     authenticate( user ) {
 
         angular.copy( user, this.vm.master );
-        this.login.authenticate( user )
-            .then( ( obj ) => {
 
-                this.nickname = obj.nickname;
-                this.id = obj.id;
-                this.status = "on";
-
-                this.state.transitionTo('Home');
-        });
     }
 
     logoff() {
 
         this.user = angular.copy( this.vm.master );
-        this.login.logoff()
-            .then( ( obj ) => {
 
-                this.nickname = "";
-                this.id = "";
-                this.status = "off";
-
-                this.state.transitionTo('Root');
-            });
     }
 
     register( user ) {
 
-        this.login.register( user )
-            .then( ( obj ) => {
-
-                this.nickname = obj.nickname;
-                this.id = obj.id;
-                this.status = "on";
-
-                this.state.transitionTo( 'Home' );
-
-            });
     }
 }
 
@@ -89,7 +62,7 @@ bindings   Control the data binding between template variables and the controlle
 let LoginComponentOptions = {
 
     templateUrl: 'partials/login.html',
-    controller: ['$state', 'LoginService', LoginComponentController ],
+    controller: ['$state', LoginComponentController ],
     bindings: {
         count:    "=",
         nickname: "<",
