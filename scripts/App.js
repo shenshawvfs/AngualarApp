@@ -7,12 +7,8 @@
  */
 'use_strict';
 
-//import { Timer } from 'timer';
-
 class AppController {
-
     constructor( TimerService ) {
-
         let myData = {
             id: "",
             loop: null,
@@ -25,17 +21,18 @@ class AppController {
             author: "PGWM Students"
         };
     }
-
-
 }
 
 /* -------------------------------------------------------------------------- */
 // MAIN - start the whole thing off by creating the AppController
 // Define the routing for the app using the UI router.
-
 angular.module('app.controllers', ['ui.router'])
     .config(['$stateProvider', function( $stateProvider ) {
-
+        /*
+        Configure the $stateProvider service provided by the ui.router module
+        with a set of known states.  Each state has a name, url and html file
+        that can replace the ui-view place holder.
+        */
         let loginState = {
             name: 'Login',
             url:  '/',
@@ -59,10 +56,17 @@ angular.module('app.controllers', ['ui.router'])
         $stateProvider.state( mainState );
     }])
     .run(['$state', function($state) {
-
+        /*
+        use the $state service provided by the ui.router module to set the default
+        state (and in turn replace the <div ui-view></div> element with the html provided)
+        */
         $state.transitionTo('Login');
     }])
-    .controller('AppController', function() {
-
+    .controller('AppController', ['TimerService', function( TimerService) {
+        /*
+        Register the controller, give it (a name, [an array])
+        the array should have a list of depency names, and a function that creates
+        a controller object using the injected dependencies.
+        */
         return new AppController( TimerService );
-    });
+    }]);

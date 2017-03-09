@@ -8,7 +8,6 @@
  *
  */
 'use strict';
-
 const __private__ = new WeakMap();
 
 /*
