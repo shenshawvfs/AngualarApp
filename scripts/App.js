@@ -25,43 +25,25 @@ class AppController {
             author: "PGWM Students"
         };
     }
-
-
 }
 
 /* -------------------------------------------------------------------------- */
 // MAIN - start the whole thing off by creating the AppController
 // Define the routing for the app using the UI router.
 
-angular.module('app.controllers', ['ui.router'])
+angular.module('app.controllers')
     .config(['$stateProvider', function( $stateProvider ) {
 
-        let rootState = {
-            name: 'Root',
-            url:  '/',
-            templateUrl: 'partials/index.html'
-            // controller: 'HomeController as $ctrl';
-        };
-        $stateProvider.state( rootState );
-
-        let homeState = {  // now user is logged in
-            name: 'Home',
-            url:  '/home',
-            templateUrl: 'partials/home.html'
-        };
-        $stateProvider.state( homeState );
-
-        let mainState = {
-            name: 'Main',
-            url:  '/main',
-            templateUrl: 'partials/main.html'
-        };
-        $stateProvider.state( mainState );
+    	$stateProvider
+    		.state({ name: 'Root', url: '/',     templateUrl: 'partials/index.html'})  
+    		.state({ name: 'Home', url: '/home', templateUrl: 'partials/home.html'})
+    		.state({ name: 'Main', url: '/main', templateUrl: 'partials/main.html'})
+    		.state({ name: 'Test', url: '/test', templateUrl: 'partials/test.html'});
     }])
     .run(['$state', function($state) {
-
-        $state.transitionTo('Root');
-    }])
+    	
+    	$state.transitionTo('Root'); 
+	}])
     .controller('AppController', function() {
 
         return new AppController( TimerService, LoginService );

@@ -20,22 +20,22 @@ const __private__ = new WeakMap();
  * angular system.
  *
  */
-let module = {
-    components: angular.module('app.components',[]),
-    controllers: angular.module('app.controllers',[]),
-    directives: angular.module('app.directives',[]),
-    services: angular.module('app.services', [])
-};
+
+angular.module('app.components',[]);
+angular.module('app.controllers',[]);
+angular.module('app.directives',[]);
+angular.module('app.services', []);
+
 
 /*
  * Declare the app itself and all the dependencies it relies on
  * This can later be used to add routing or other service providers.
  * Angular constructs to add modular functionality to an APP
  */
-var app = angular.module('app', [
-     'app.services',     // This is a module that we depend on.
-     'app.directives',   // This is a module that we depend on.
-     'app.components',   // This is a module that we depend on.
-     'app.controllers',  // This is a module that we depend on.
-     'ui.router'
+angular.module('app', [
+     'ui.router',
+     'app.services',
+     'app.controllers',
+     'app.directives',
+     'app.components',
 ]);

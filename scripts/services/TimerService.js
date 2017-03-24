@@ -1,4 +1,3 @@
-'use_strict';
 /**
  * @name VFS Angular Timer
  * @desc The timer object is a class that manages a simple Angular interval timer
@@ -8,6 +7,7 @@
  * @author Scott Henshaw
  *
  */
+'use_strict';
 
 
 class TimerService {

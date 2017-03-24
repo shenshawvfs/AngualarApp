@@ -12,7 +12,7 @@ class MenuComponentController {
     constructor($state) {
 
         this.state = $state;
-        this.content = ['Root', 'Home', 'Main'];
+        this.content = ['Root', 'Home', 'Main', 'Test'];
         this.currentPage = 'Root';
     }
 
