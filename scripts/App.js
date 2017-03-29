@@ -25,8 +25,6 @@ class AppController {
             author: "PGWM Students"
         };
     }
-
-
 }
 
 /* -------------------------------------------------------------------------- */
@@ -36,27 +34,10 @@ class AppController {
 angular.module('app.controllers', ['ui.router'])
     .config(['$stateProvider', function( $stateProvider ) {
 
-        let loginState = {
-            name: 'Login',
-            url:  '/',
-            templateUrl: 'partials/index.html'
-            // controller: 'HomeController as $ctrl';
-        };
-        $stateProvider.state( loginState );
-
-        let homeState = {  // now user is logged in
-            name: 'Home',
-            url:  '/home',
-            templateUrl: 'partials/home.html'
-        };
-        $stateProvider.state( homeState );
-
-        let mainState = {
-            name: 'Main',
-            url:  '/main',
-            templateUrl: 'partials/main.html'
-        };
-        $stateProvider.state( mainState );
+        $stateProvider
+            .state({ name: 'Login',  url:  '/',      templateUrl: 'partials/index.html'})
+            .state({ name: 'Home',   url:  '/home',  templateUrl: 'partials/home.html'})
+            .state({ name: 'Main',   url:  '/main',  templateUrl: 'partials/main.html'});
     }])
     .run(['$state', function($state) {
 
