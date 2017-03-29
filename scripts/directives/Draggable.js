@@ -129,6 +129,9 @@ class Draggable {
 }
 
 
-
+/*
+Register the directive, give it (a name, a directive class)
+the directive should be a class that can be created.
+*/
 angular.module('app.directives')
     .directive('pgDraggable', Draggable );

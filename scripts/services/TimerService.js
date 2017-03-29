@@ -14,13 +14,13 @@ class TimerService {
 
     constructor( $interval ) {
 
-        let privateData = {
+        let myData = {
             loop:             null,
             startTime:        new Date(),
         };
-        __private__.set( this, privateData );
-        let my = privateData;
+        __private__.set( this, myData );
 
+        // save the injected service provider for later
         this.interval = $interval;
     }
 
@@ -44,7 +44,6 @@ class TimerService {
         }, 1000/60 );
     }
 
-
     stop( timerComponent ) {
         let my = __private__.get( this );
 
@@ -54,12 +53,15 @@ class TimerService {
 
         //timerComponent.update( 0, 0, 0, "Waiting...");
     }
-
 }
 
 // Now lets create a generic angular service for this (really this one is a factory)
 angular.module('app.services')
     .service('TimerService', ['$interval', function( $interval ) {
-
+        /*
+        Register the service, give it (a name, [an array])
+        the array should have a list of depency names, and a function that creates
+        a service object using the injected dependencies.
+        */
         return new TimerService( $interval );
     }]);

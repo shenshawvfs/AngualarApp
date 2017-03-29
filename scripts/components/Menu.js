@@ -6,26 +6,20 @@
  *
  */
 'use_strict';
-
 class MenuComponentController {
-
     constructor($state) {
-
         this.state = $state;
         this.content = ['Login', 'Home', 'Main'];
         this.currentPage = 'Login';
     }
 
     setPage( page ) {
-
         this.state.transitionTo( page );
         this.currentPage = page;
     }
 }
 
-
 let MenuComponentOptions = {
-
     template: `
         <div class="sidebar">
             Current Page: {{ $ctrl.currentPage }} <br />

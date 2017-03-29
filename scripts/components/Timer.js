@@ -10,9 +10,7 @@
 class TimerComponentController {
 
     constructor( $element, $attrs, TimerService ) {
-
         this.timer = TimerService;
-
         // Public members mapped to $scope.  These are watched and can be used
         // by the Angular HTML app.
         this.vm = {
@@ -22,13 +20,11 @@ class TimerComponentController {
     }
 
     update( deltaMin, deltaSec, deltaMs, label ) {
-
         this.vm.time = `${deltaMin.toString()}:${deltaSec.toString()}:${deltaMs.toString()}`;
         this.vm.label = label;
     }
 
     timeString( deltaMin, deltaSec, deltaMs, label ) {
-
         let timeText = `${deltaMin.toString()}:${deltaSec.toString()}:${deltaMs.toString()}`;
         return timeText;
     }
@@ -44,16 +40,15 @@ class TimerComponentController {
 
 // Options for the timer component
 let TimerComponentOptions = {
-
+    // Restricted to elements only
     template: `
-    <div id="timer-demo">
-        <div id="timer">{{$ctrl.vm.time}} {{$ctrl.vm.label}}</div>
-        <button ng-click="$ctrl.startTimer()">Start</button>
-        <button ng-click="$ctrl.stopTimer()">Stop</button>
-    </div>`,
-    // restrict: 'EA',
+        <div id="timer-demo">
+            <div id="timer">{{$ctrl.vm.time}} {{$ctrl.vm.label}}</div>
+            <button ng-click="$ctrl.startTimer()">Start</button>
+            <button ng-click="$ctrl.stopTimer()">Stop</button>
+        </div>`,
     //templateUrl: "partials/timer.html",
-    controller: ['$element','$attrs', 'TimerService', TimerComponentController ],
+    controller:  ['$element','$attrs', 'TimerService', TimerComponentController],
     bindings: {
         label: '<',
         time: '<',

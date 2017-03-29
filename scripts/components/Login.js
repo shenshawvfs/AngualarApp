@@ -10,39 +10,30 @@
 class LoginComponentController {
 
     constructor( $state ) {
-
         let myData = {
-
             nickname: "nobody",
             id:       0,
             status:   "off"
         };
         __private__.set( this, myData );
-
         this.state = $state
-
         this.vm = {
-            master:  {}
+            master:  {},
+            user: {}
         };
     }
 
     authenticate( user ) {
-
         angular.copy( user, this.vm.master );
-
     }
 
     logoff() {
-
         this.user = angular.copy( this.vm.master );
-
     }
 
     register( user ) {
-
     }
 }
-
 
 /*
 template:
@@ -70,7 +61,6 @@ let LoginComponentOptions = {
         status:   "@"
     }
 };
-
 
 angular.module('app.components')
     .component('pgLogin', LoginComponentOptions );
