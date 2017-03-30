@@ -31,7 +31,7 @@ class AppController {
 // MAIN - start the whole thing off by creating the AppController
 // Define the routing for the app using the UI router.
 
-angular.module('app.controllers', ['ui.router'])
+angular.module('app.controllers')
     .config(['$stateProvider', function( $stateProvider ) {
 
         $stateProvider

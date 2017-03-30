@@ -1,4 +1,3 @@
-'use_strict';
 /**
  * @name VFS Angular Timer
  * @desc The timer object is a class that manages a simple Angular interval timer
@@ -9,22 +8,33 @@
  *
  */
 
+'use_strict';
+
 
 class TimerService {
 
     constructor( $interval ) {
 
-        let myData = {
+        let privateData = {
             loop:             null,
             startTime:        new Date(),
         };
-        __private__.set( this, myData );
+        __private__.set( this, privateData );
+        let my = privateData;
 
-        // save the injected service provider for later
         this.interval = $interval;
+
+        // Public members mapped to $scope.  These are watched and can be used
+        // by the Angular HTML app.
+        this.vm = {
+            lable: "Waiting...",
+            time: "00:00:000"
+        };
+
+        this.update( 0, 0, 0, "Waiting...");
     }
 
-    start( timerComponent ) {
+     start( timerComponent ) {
         // if the loop is not null then its already been started.
         let my = __private__.get( this );
         if (my.loop != null)
@@ -43,7 +53,7 @@ class TimerService {
 
         }, 1000/60 );
     }
-
+    
     stop( timerComponent ) {
         let my = __private__.get( this );
 
@@ -51,7 +61,15 @@ class TimerService {
         this.interval.cancel( my.loop );
         my.loop = null;
 
-        //timerComponent.update( 0, 0, 0, "Waiting...");
+        if (my.update != null)
+            my.update( 0, 0, 0, "Waiting...");
+    }
+
+    
+    update( deltaMin, deltaSec, deltaMs, label ) {
+
+        this.vm.time = `${deltaMin.toString()}:${deltaSec.toString()}:${deltaMs.toString()}`;
+        this.vm.label = label;
     }
 }
 
@@ -65,3 +83,21 @@ angular.module('app.services')
         */
         return new TimerService( $interval );
     }]);
+=======
+/**
+ * @name VFS Angular Timer
+ * @desc The timer object is a class that manages a simple Angular interval timer
+ * much like the setInterval in JavaScript.  Just a sample of what can be done.
+ *
+ * @copyright (C) 2014-2015 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
+ * @author Scott Henshaw
+ *
+ */
+'use_strict';
+
+
+class TimerService {
+
+    
+}
+

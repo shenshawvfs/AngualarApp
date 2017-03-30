@@ -19,12 +19,16 @@
                 <h3>by {{app.vm.author}}</h3>
             </div>
 
+            <pg-login></pg-login>
+
             <div id="app-area">
 
                 <div id="sidebar" width="30%">
 
                     <pg-timer></pg-timer>
+                    
                     <pg-menu></pg-menu>
+                    
                 </div>
 
                 <div class="current-screen" width="65%">
@@ -54,6 +58,7 @@
             <script src="scripts/Modules.js" defer></script>
 
             <script src="scripts/services/TimerService.js" defer></script>
+            <script src="scripts/services/DataService.js" defer></script>
 
             <script src="scripts/directives/Draggable.js" defer></script>
 
@@ -62,6 +67,13 @@
             <script src="scripts/components/Timer.js" defer></script>
 
             <script src="scripts/App.js" defer></script>
+        </section>
+    </body>
+</html>
+
+
+            
+
         </section>
     </body>
 </html>

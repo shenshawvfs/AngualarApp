@@ -5,8 +5,11 @@
  * @author Scott Henshaw
  *
  */
+
 'use_strict';
+
 class MenuComponentController {
+
     constructor($state) {
         this.state = $state;
         this.content = ['Login', 'Home', 'Main'];
@@ -19,21 +22,20 @@ class MenuComponentController {
     }
 }
 
-let MenuComponentOptions = {
-    template: `
-        <div class="sidebar">
-            Current Page: {{ $ctrl.currentPage }} <br />
-            <ul>
-                <li ng-repeat="page in $ctrl.content" class="menuitem">
-                    <button ng-click="$ctrl.setPage( page )">{{page}}</button>
-                </li>
-            </ul>
-        </div>`,
-    controller: ['$state', MenuComponentController ],
-    bindings: {
-        currentPage: "@"
-    }
-};
-
 angular.module('app.components')
-    .component('pgMenu', MenuComponentOptions );
+    .component('pgMenu', {
+        template: `
+            <div class="sidebar">
+                Current Page: {{ $ctrl.currentPage }} <br />
+                <ul>
+                    <li ng-repeat="page in $ctrl.content" class="menuitem">
+                        <button ng-click="$ctrl.setPage( page )">{{page}}</button>
+                    </li>
+                </ul>
+            </div>`,
+        controller: ['$state', MenuComponentController ],
+        bindings: {
+            currentPage: "@"
+        }
+    });
+
