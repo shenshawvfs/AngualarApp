@@ -53,7 +53,7 @@ class TimerService {
 
         }, 1000/60 );
     }
-    
+
     stop( timerComponent ) {
         let my = __private__.get( this );
 
@@ -65,7 +65,7 @@ class TimerService {
             my.update( 0, 0, 0, "Waiting...");
     }
 
-    
+
     update( deltaMin, deltaSec, deltaMs, label ) {
 
         this.vm.time = `${deltaMin.toString()}:${deltaSec.toString()}:${deltaMs.toString()}`;
@@ -83,21 +83,3 @@ angular.module('app.services')
         */
         return new TimerService( $interval );
     }]);
-=======
-/**
- * @name VFS Angular Timer
- * @desc The timer object is a class that manages a simple Angular interval timer
- * much like the setInterval in JavaScript.  Just a sample of what can be done.
- *
- * @copyright (C) 2014-2015 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
- * @author Scott Henshaw
- *
- */
-'use_strict';
-
-
-class TimerService {
-
-    
-}
-
