@@ -38,4 +38,3 @@ angular.module('app.components')
             currentPage: "@"
         }
     });
-
