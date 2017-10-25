@@ -1,14 +1,13 @@
 /**
- * Angular Module Definitions
+ * AngularJS Module Definitions
  *
- * @copyright: (C) 2014-2016 Kibble Games Inc in cooperation with
- *                             Vancouver Film School.
- *                             All Rights Reserved.
+ * @copyright: (C) 2014-2017 Kibble Games Inc in cooperation with
+ *                            Vancouver Film School.
+ *                            All Rights Reserved.
  * @author: Scott Henshaw
  *
  */
 'use strict';
-const __private__ = new WeakMap();
 
 /*
  * Module definitions
@@ -30,13 +29,12 @@ angular.module('app.services', []);
  * This can later be used to add routing or other service providers.
  * Angular constructs to add modular functionality to an APP
  */
-var app = angular.module('app', [   // list modules that we depend on.
+var vfs = vfs || {};
+vfs.app = angular.module('app', [   // list modules that we depend on.
     'ui.router',
-    
+
      'app.services',
      'app.directives',
      'app.components',
      'app.controllers',
 ]);
-
-

@@ -7,19 +7,20 @@
             <input class="input login username" type="text" placeholder="nickname" ng-model="user.nickname"/>
             <br />
             <input class="input login submit" type="submit" placeholder="Login!" />
-            <span id="logout-container" ng-if="$ctrl.status=='on'">
+
+            <span id="logout-container" ng-if="$ctrl.vm.status=='on'">
                 <button type="button" placeholder="Logout" ng-click="$ctrl.logoff()"/>Logout</button>
             </span>
         </form>
 
         <div>
-        Logged {{login.status}} <span ng-if="$ctrl.status=='on'"> as {{login.nickname}} id: {{login.id}}</span>
+        Logged {{$ctrl.vm.status}} <span ng-if="$ctrl.vm.status=='on'"> as {{$ctrl.vm.nickname}} id: {{$ctrl.vm.id}}</span>
         </div>
 
 
         <div id="debug-data">
-            <pre>form = {{user|json}}</pre>
-            <pre>master = {{$ctrl.master|json}}</pre>
+            <pre>form   = {{user|json}}</pre>
+            <pre>master = {{$ctrl.vm.master|json}}</pre>
         </div>
 
     </div>

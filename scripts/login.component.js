@@ -1,5 +1,5 @@
 /**
- * @name VFS Angular Component
+ * @name VFS AngularJS Component
  *
  * @copyright (C) 2014-2017 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
  * @author Scott Henshaw
@@ -10,25 +10,27 @@
 class LoginComponentController {
 
     constructor( $state ) {
-        let myData = {
-            nickname: "nobody",
-            id:       0,
-            status:   "off"
-        };
-        __private__.set( this, myData );
-        this.state = $state
+        this.stateSvc = $state
         this.vm = {
-            master:  {},
-            user: {}
+            nickname: "unknown",
+            id:       0,
+            master:   {},
+            user:     {},
+            status:   "off"
         };
     }
 
     authenticate( user ) {
         angular.copy( user, this.vm.master );
+        this.vm.nickname = this.vm.master.nickname
+        this.vm.status = "on";
     }
 
     logoff() {
         this.user = angular.copy( this.vm.master );
+        this.vm.master = {};
+        this.vm.status = "off";
+        this.vm.nickname = "";
     }
 
     register( user ) {
@@ -50,17 +52,13 @@ bindings   Control the data binding between template variables and the controlle
 
             binding data elements are tied to $ctrl by default.
 */
-let LoginComponentOptions = {
-
-    templateUrl: 'partials/login.html',
-    controller: ['$state', LoginComponentController ],
-    bindings: {
-        count:    "=",
-        nickname: "<",
-        id:       "<",
-        status:   "@"
-    }
-};
-
 angular.module('app.components')
-    .component('pgLogin', LoginComponentOptions );
+    .component('pgLogin', {
+        templateUrl: 'partials/login.html',
+        controller:  ['$state', LoginComponentController ],
+        bindings:    {
+            nickname: "<",
+            id:       "<",
+            status:   "@"
+        }
+    });

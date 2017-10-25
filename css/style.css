@@ -105,6 +105,22 @@ li.button {
 
 .simple-form { }
 
+.border {
+    padding: 2px;
+    border: 1px solid black;
+}
+
+.bevel {
+    border-top: 2px solid lightgrey;
+    border-left: 2px solid lightgrey;
+    border-right: 2px solid darkgrey;
+    border-bottom: 2px solid darkgrey;
+}
+
+#app-area {
+    min-height: 720px;
+}
+
 #home-area {
     padding-top:  0em;
 }

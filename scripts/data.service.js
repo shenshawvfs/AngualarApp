@@ -1,25 +1,23 @@
 /**
- * Angular Services - DataService
+ * AngularJS Services - DataService
  *
- * @copyright: (C) 2016 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
+ * @copyright: (C) 2016-2017 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
  * @author: Scott Henshaw
- *
  */
  'use strict';
 
 // import ???
 
-class DataService { 
+class DataService {
 
     constructor( $http, $httpParamSerializerJQLike ) {
 
-        let pseudoPrivate = {
-            appid:                  "",
+        this.my = {
+            appid:  "",
         };
-        __private__.set( this, pseudoPrivate );
 
         // Service Providers
-        this.http =           $http;
+        this.httpSvc =        $http;
         this.httpSerializer = $httpParamSerializerJQLike;
 
         // public view model.  Use these in templates.
@@ -32,11 +30,9 @@ class DataService {
     }
 
     loadSomeData() { // RENAME ME !
-        
-        let my = __private__.get( this ); // retrieve pseudo private data
 
-        let params = this.httpSerializer( my.appid );
-        this.http.post('server/my_command/', params )
+        let params = this.httpSerializer( this.my.appid );
+        this.httpSvc.post('server/my_command/', params )
             .then( ( obj ) => {
 
                 let response = obj.data;
@@ -46,11 +42,9 @@ class DataService {
 
 
     saveSomeData( aProduct ) { // RENAME ME !
-        
-        let my = __private__.get( this );// retrieve pseudo private data
 
         let pData = this.httpSerializer( aProduct );
-        this.http.post("server/another_command/", pData )
+        this.httpSvc.post("server/another_command/", pData )
             .then( ( result ) => {
 
                 let p = result.data;

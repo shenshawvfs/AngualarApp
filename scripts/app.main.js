@@ -1,7 +1,7 @@
 /**
- * @name VFS Angular App Controller
+ * @name VFS AngularJS App Controller
  *
- * @copyright (C) 2014-2015 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
+ * @copyright (C) 2014-2017 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
  * @author Scott Henshaw
  *
  */
@@ -13,11 +13,17 @@ class AppController {
 
     constructor( TimerService ) {
 
-        let myData = {
+        this['private'] = new WeakMap();
+        this.private.members = ( key, value ) => {
+            if (value != undefined)
+                this.private.set( key, value );
+            return this.private.get( key );
+        }
+
+        let my = this.private.members( this, {
             id: "",
             loop: null,
-        };
-        __private__.set( this, myData );
+        });
 
         // The View Model (vm) keeps clear the data the template can/should bind to
         this.vm = {
