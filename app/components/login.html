@@ -6,10 +6,12 @@
 
             <input class="input login username" type="text" placeholder="nickname" ng-model="user.nickname"/>
             <br />
-            <input class="input login submit" type="submit" placeholder="Login!" />
 
+            <span id="logon-container" ng-if="$ctrl.vm.status=='off'">
+                <input class="input login submit" type="submit" placeholder="Login!" />
+            </span>
             <span id="logout-container" ng-if="$ctrl.vm.status=='on'">
-                <button type="button" placeholder="Logout" ng-click="$ctrl.logoff()"/>Logout</button>
+                <input class="input login submit" type="button" placeholder="Logout" ng-click="$ctrl.logoff()"/>Logout</button>
             </span>
         </form>
 

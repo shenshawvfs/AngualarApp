@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="static/css/style.css">
 
     </head>
 
@@ -51,18 +51,18 @@
                 3. services that the controllers will use
                 4. controllers
              -->
-            <script src="scripts/app.modules.js" defer></script>
+            <script src="app/app.js" defer></script>
 
-            <script src="scripts/timer.service.js" defer></script>
-            <script src="scripts/data.service.js" defer></script>
+            <script src="app/shared/draggable.directive.js" defer></script>
 
-            <script src="scripts/draggable.directive.js" defer></script>
+            <script src="app/components/timer.service.js" defer></script>
+            <script src="app/components/data.service.js" defer></script>
 
-            <script src="scripts/menu.component.js" defer></script>
-            <script src="scripts/login.component.js" defer></script>
-            <script src="scripts/timer.component.js" defer></script>
+            <script src="app/components/menu.component.js" defer></script>
+            <script src="app/components/login.component.js" defer></script>
+            <script src="app/components/timer.component.js" defer></script>
 
-            <script src="scripts/app.main.js" defer></script>
+            <script src="app/app.controller.js" defer></script>
         </section>
     </body>
 </html>

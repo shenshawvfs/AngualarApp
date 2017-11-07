@@ -48,7 +48,7 @@ angular.module('app.components')
                 <button ng-click="$ctrl.startTimer()">Start</button>
                 <button ng-click="$ctrl.stopTimer()">Stop</button>
             </div>`,
-        //templateUrl: "partials/timer.html",
+        //templateUrl: "app/components/timer.html",
         controller:  ['$element','$attrs', 'TimerService', TimerComponentController],
         bindings: {
             label: '<',

@@ -24,9 +24,10 @@ class SampleComponentController {
 	}
 }
 
+
 angular.module('app.controllers')
 	.component('SampleComponentController',  {
-        templateUrl: 'partials/sample.html',
+        //templateUrl: 'app/components/sample.html',
         template: `
         <div id="home-area" class="row">
             <div >

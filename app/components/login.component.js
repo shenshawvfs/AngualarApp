@@ -24,6 +24,7 @@ class LoginComponentController {
         angular.copy( user, this.vm.master );
         this.vm.nickname = this.vm.master.nickname
         this.vm.status = "on";
+        // This might be the place to contact a service that could in fact authenticate the user...
     }
 
     logoff() {
@@ -54,7 +55,7 @@ bindings   Control the data binding between template variables and the controlle
 */
 angular.module('app.components')
     .component('pgLogin', {
-        templateUrl: 'partials/login.html',
+        templateUrl: 'app/components/login.html',
         controller:  ['$state', LoginComponentController ],
         bindings:    {
             nickname: "<",

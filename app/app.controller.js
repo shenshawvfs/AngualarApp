@@ -38,18 +38,6 @@ class AppController {
 // Define the routing for the app using the UI router.
 
 angular.module('app.controllers')
-    .config(['$stateProvider', function( $stateProvider ) {
-
-        $stateProvider
-            .state({ name: 'Login',  url:  '/',      templateUrl: 'partials/index.html'})
-            .state({ name: 'Home',   url:  '/home',  templateUrl: 'partials/home.html'})
-            .state({ name: 'Main',   url:  '/main',  templateUrl: 'partials/main.html'});
-    }])
-    .run(['$state', function($state) {
-
-        $state.transitionTo('Login');
-    }])
-    .controller('AppController', function() {
-
+    .controller('AppController', ['TimerService', function( TimerService ) {
         return new AppController( TimerService );
-    });
+    }]);
