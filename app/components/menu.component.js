@@ -1,7 +1,7 @@
 /**
- * @name VFS Angular Menu Component
+ * @name VFS AngularJS Menu Component
  *
- * @copyright (C) 2014-2015 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
+ * @copyright (C) 2014-2017 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
  * @author Scott Henshaw
  *
  */
@@ -11,13 +11,13 @@
 class MenuComponentController {
 
     constructor($state) {
-        this.state = $state;
+        this.stateSvc = $state;
         this.content = ['Login', 'Home', 'Main'];
         this.currentPage = 'Login';
     }
 
     setPage( page ) {
-        this.state.transitionTo( page );
+        this.stateSvc.transitionTo( page );
         this.currentPage = page;
     }
 }

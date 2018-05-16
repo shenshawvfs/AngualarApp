@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<!-- Demo Copyright (C) 2015 Kibble Games Inc in partnership with Vancouver Film School -->
+<!-- Demo Copyright (C) 2015-2017 Kibble Games Inc in partnership with Vancouver Film School -->
 <html ng-app="app">
 	<head>
         <title>App!</title>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 
         <meta name="description" content="Angular App">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="static/css/style.css">
 
     </head>
 
@@ -18,23 +19,18 @@
                 <h1 id="title">{{app.vm.title}}</h1>
                 <h3>by {{app.vm.author}}</h3>
             </div>
-
-            <pg-login></pg-login>
-
             <div id="app-area">
-
                 <div id="sidebar" width="30%">
-
                     <pg-timer></pg-timer>
-                    
                     <pg-menu></pg-menu>
-                    
                 </div>
 
                 <div class="current-screen" width="65%">
-                    <div id="screen" class="app-screen" >
+                    <div id="screen" class="app-screen border" >
+
                         <!-- UI Module View Routing dynamically loads partial views here -->
                         <div ui-view></div>
+
                     </div>
                 </div>
                 <div class='clear'></div>
@@ -55,24 +51,24 @@
                 3. services that the controllers will use
                 4. controllers
              -->
-            <script src="scripts/Modules.js" defer></script>
+            <script src="app/app.js" defer></script>
 
-            <script src="scripts/services/TimerService.js" defer></script>
-            <script src="scripts/services/DataService.js" defer></script>
+            <script src="app/shared/draggable.directive.js" defer></script>
 
-            <script src="scripts/directives/Draggable.js" defer></script>
+            <script src="app/components/timer.service.js" defer></script>
+            <script src="app/components/data.service.js" defer></script>
 
-            <script src="scripts/components/Menu.js" defer></script>
-            <script src="scripts/components/Login.js" defer></script>
-            <script src="scripts/components/Timer.js" defer></script>
+            <script src="app/components/menu.component.js" defer></script>
+            <script src="app/components/login.component.js" defer></script>
+            <script src="app/components/timer.component.js" defer></script>
 
-            <script src="scripts/App.js" defer></script>
+            <script src="app/app.controller.js" defer></script>
         </section>
     </body>
 </html>
 
 
-            
+
 
         </section>
     </body>
