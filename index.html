@@ -40,29 +40,11 @@
 
         <section id="scripts">
             <!-- Load all the Angular components here, we assume they will load 1.4.7-->
-            <script src="//code.angularjs.org/1.6.2/angular.js" defer></script>
-            <script src="//code.angularjs.org/1.6.2/angular-resource.js" defer></script>
-            <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js" defer></script>
+            <script src="//code.angularjs.org/1.6.2/angular.js"></script>
+            <script src="//code.angularjs.org/1.6.2/angular-resource.js"></script>
+            <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-            <!--
-             List the main scripts here in order,
-                1. module declarations and routing
-                2. directives that the HTML will use
-                3. services that the controllers will use
-                4. controllers
-             -->
-            <script src="app/app.js" defer></script>
-
-            <script src="app/shared/draggable.directive.js" defer></script>
-
-            <script src="app/components/timer.service.js" defer></script>
-            <script src="app/components/data.service.js" defer></script>
-
-            <script src="app/components/menu.component.js" defer></script>
-            <script src="app/components/login.component.js" defer></script>
-            <script src="app/components/timer.component.js" defer></script>
-
-            <script src="app/app.controller.js" defer></script>
+            <script type="module" src="app/main.js"></script>
         </section>
     </body>
 </html>

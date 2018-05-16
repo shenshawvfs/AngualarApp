@@ -6,8 +6,7 @@
  *
  */
 'use strict';
-
-class LoginComponentController {
+export class LoginComponentController {
 
     constructor( $state ) {
         this.stateSvc = $state

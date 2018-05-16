@@ -1,14 +1,12 @@
 /**
  * @name VFS AngularJS Menu Component
  *
- * @copyright (C) 2014-2017 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
+ * @copyright (C) 2014-2018 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
  * @author Scott Henshaw
  *
  */
-
 'use_strict';
-
-class MenuComponentController {
+export class MenuComponentController {
 
     constructor($state) {
         this.stateSvc = $state;

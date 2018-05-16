@@ -7,7 +7,9 @@
  */
 'use_strict';
 
-class TimerComponentController {
+import { TimerService } from '../shared/timer.service.js';
+
+export class TimerComponentController {
 
     constructor( $element, $attrs, TimerService ) {
         // Public members mapped to $scope.  These are watched and can be used

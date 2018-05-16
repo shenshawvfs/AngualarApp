@@ -7,7 +7,8 @@
  */
 'use_strict';
 
-class SampleComponentController {
+import { SomeService } from './components/some.service.js';
+export class SampleComponentController {
 
 	constructor( someServiceINeed ) {
 

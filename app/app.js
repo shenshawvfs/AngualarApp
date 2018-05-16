@@ -9,7 +9,7 @@
  */
 'use strict';
 
-class App {
+export class App {
 
     constructor() {
 
@@ -78,4 +78,4 @@ class App {
     }
 }
 
-const app = new App();
+export const app = new App();

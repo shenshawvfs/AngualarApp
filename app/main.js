@@ -7,9 +7,15 @@
  */
 'use_strict';
 
-//import { Timer } from 'timer';
+import { app } from          './app.js';
 
-class AppController {
+import { Draggable } from    './shared/draggable.directive.js';
+
+import { MenuComponentController } from   './components/menu.component.js';
+import { LoginComponentController } from  './components/login.component.js';
+import { TimerComponentController } from  './components/timer.component.js';
+
+export class AppController {
 
     constructor( TimerService ) {
 
