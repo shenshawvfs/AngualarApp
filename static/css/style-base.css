@@ -1,0 +1,170 @@
+/*
+ * CSS Styles for Risk Demo App
+ *
+ * Copyright 2014, Vancouver Film School
+ *
+ */
+ body, html {
+    background: #242527;
+    border: none;
+    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, div, ul {
+    margin:0;
+    padding:0;
+    border:none;
+    color:#fff;
+}
+
+button {
+    border-radius: 2px;
+    font-weight: 700;
+    /* min-width:  20em; */
+    padding: 0.5em;
+}
+
+form {
+    color: white;
+    font-size: 150%;
+}
+input {height: 1.4em;font-weight:  700;font-size: 1.2em;}
+
+.debug {
+    border:1px dashed red;
+    z-index: 6000;
+}
+
+.clear { clear: both; }
+
+.list-block {
+    list-style: none;
+    display: flex;
+    width: 100%;
+}
+
+.list-block li {
+    flex-grow: 1;
+}
+
+.menuitem {
+    list-style-type: none;
+    margin: 2px;
+}
+
+.menuitem button {
+    min-width: 5em;
+}
+
+.dialog {
+    box-shadow: 3px 3px 13px black;
+    margin: 0 auto;
+    padding: 1em;
+    width: 50%;
+}
+
+.app-container {
+    background-color: black;
+    border: 1px solid black;
+    margin: 0 auto;
+    min-height: 720px;
+    position: relative;
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: 5em 15% 60% 15% 6em;
+    grid-template-rows: 1em 10% 55% 10em 2em;
+}
+    .grid-gutter-left {
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+    .grid-sidebar-left {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+    .grid-column-main {
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+    .grid-sidebar-right {
+        grid-column-start: 4;
+        grid-column-end: 5;
+    }
+
+    .grid-gutter-right {
+        grid-column-start: 5;
+        grid-column-end: 6;
+    }
+
+    .grid-row-top {
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    .grid-row-head {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    .grid-row-main {
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+    .grid-row-tail {
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+    .grid-row-foot {
+        grid-row-start: 5;
+        grid-row-end: 6;
+    }
+
+.flex-wrapper { 
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:none;
+    justify-content: center;
+    
+    margin: 0 auto;
+    margin-top: 1%;
+    width: 98%;
+}
+
+    .sidebar-item {
+        /* should live withing a flex box */
+        /* width: 10%; */
+        flex-grow: 1;
+    }
+
+    .uiview-item {
+        /* should live withing a flex box */
+        display:  flex;
+        flex-grow: 5;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        min-width: 83%;
+    }
+
+    .sidebar-right {
+        /* should live withing a flex box */
+        width: 15%;
+    }
+
+.border {
+    padding: 2px;
+    border: 4px solid black;
+}
+
+.bevel {
+    background-color: cornflowerblue;
+    border-top: 3px solid lightskyblue;
+    border-left: 3px solid lightskyblue;
+    border-right: 3px solid darkblue;
+    border-bottom: 3px solid darkblue;
+}
