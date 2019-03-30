@@ -1,12 +1,9 @@
 /**
- * @name VFS AngularJS Component
- *
- * @copyright (C) 2014-2017 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
+ * @copyright (C)2014-2019 Kibble Online Inc., in cooperation with Vancouver Film School.
  * @author Scott Henshaw
- *
  */
 'use strict';
-export class LoginComponentController {
+export default class LoginController {
 
     constructor( $state ) {
         this.stateSvc = $state
@@ -55,7 +52,7 @@ bindings   Control the data binding between template variables and the controlle
 angular.module('app.components')
     .component('pgLogin', {
         templateUrl: 'app/components/login.html',
-        controller:  ['$state', LoginComponentController ],
+        controller:  ['$state', LoginController ],
         bindings:    {
             nickname: "<",
             id:       "<",

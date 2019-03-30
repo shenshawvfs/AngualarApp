@@ -8,7 +8,7 @@
 'use_strict';
 
 
-class SampleService {
+export default class SampleService {
 
 	constructor( dependentService ) {
 
@@ -21,7 +21,7 @@ class SampleService {
 	populate() {
 		// Go to a server and retrieve data to add to this.modelData.
         this.svcProvider.getData()
-            .then( ( responseData ) => {
+            .then( responseData => {
 
                 this.model = new ModelObject( responseData );
             });

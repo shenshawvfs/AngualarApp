@@ -8,7 +8,7 @@
  */
 'use strict';
 
-export class SampleItem {
+export default class SampleItem {
 
     constructor() {
 

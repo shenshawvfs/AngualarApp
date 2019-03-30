@@ -7,9 +7,9 @@
  */
 'use_strict';
 
-import { TimerService } from '../shared/timer.service.js';
+import TimerService from '../shared/timer.service.js';
 
-export class TimerComponentController {
+export default class TimerController {
 
     constructor( $element, $attrs, TimerService ) {
         // Public members mapped to $scope.  These are watched and can be used
@@ -51,7 +51,7 @@ angular.module('app.components')
                 <button ng-click="$ctrl.stopTimer()">Stop</button>
             </div>`,
         //templateUrl: "app/components/timer.html",
-        controller:  ['$element','$attrs', 'TimerService', TimerComponentController],
+        controller:  ['$element','$attrs', 'TimerService', TimerController],
         bindings: {
             label: '<',
             time: '<',

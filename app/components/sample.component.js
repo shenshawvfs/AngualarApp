@@ -7,8 +7,9 @@
  */
 'use_strict';
 
-import { SomeService } from './components/some.service.js';
-export class SampleComponentController {
+import SomeService from './components/some.service.js';
+
+export default class SampleController {
 
 	constructor( someServiceINeed ) {
 
@@ -27,7 +28,7 @@ export class SampleComponentController {
 
 
 angular.module('app.controllers')
-	.component('SampleComponentController',  {
+	.component('SampleController',  {
         //templateUrl: 'app/components/sample.html',
         template: `
         <div id="home-area" class="row">
@@ -36,7 +37,7 @@ angular.module('app.controllers')
             </div>
         </div>
         `,
-        controller:  ['someServiceINeed', SampleComponentController ],
+        controller:  ['someServiceINeed', SampleController ],
         bindings:    {
             title:    "@",
         }

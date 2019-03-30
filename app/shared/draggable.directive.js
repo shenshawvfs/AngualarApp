@@ -3,8 +3,7 @@
  *
  * Copyright 2014, Google, adapted for VFS Use  All Rights Reserved.
  */
-
-export class Draggable {
+export default class Draggable {
 
     constructor() {
         /*

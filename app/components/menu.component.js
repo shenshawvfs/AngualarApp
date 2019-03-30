@@ -6,16 +6,18 @@
  *
  */
 'use_strict';
-export class MenuComponentController {
+export default class MenuController {
 
-    constructor($state) {
+    constructor( $state ) {
+
         this.stateSvc = $state;
         this.content = ['Login', 'Home', 'Main'];
         this.currentPage = 'Login';
     }
 
     setPage( page ) {
-        this.stateSvc.transitionTo( page );
+
+        this.stateSvc.go( page );
         this.currentPage = page;
     }
 }
@@ -31,7 +33,7 @@ angular.module('app.components')
                     </li>
                 </ul>
             </div>`,
-        controller: ['$state', MenuComponentController ],
+        controller: ['$state', MenuController ],
         bindings: {
             currentPage: "@"
         }

@@ -10,7 +10,7 @@
 'use_strict';
 
 
-export class TimerService {
+export default class TimerService {
 
     constructor( $interval ) {
         // Public members mapped to $scope.  These are watched and can be used

@@ -1,14 +1,14 @@
 /**
  * AngularJS Services - DataService
  *
- * @copyright: (C) 2016-2017 Kibble Games Inc in cooperation with Vancouver Film School.  All Rights Reserved.
+ * @Copyright (C)2016-2019 Kibble Online Inc in cooperation with Vancouver Film School.
  * @author: Scott Henshaw
  */
  'use strict';
 
 // import ???
 
-class DataService {
+export default class DataService {
 
     constructor( $http, $httpParamSerializerJQLike ) {
 
@@ -33,7 +33,7 @@ class DataService {
 
         let params = this.httpSerializer( this.my.appid );
         this.httpSvc.post('server/my_command/', params )
-            .then( ( obj ) => {
+            .then( obj => {
 
                 let response = obj.data;
                 this.vm.productList = response.payload;
@@ -45,14 +45,13 @@ class DataService {
 
         let pData = this.httpSerializer( aProduct );
         this.httpSvc.post("server/another_command/", pData )
-            .then( ( result ) => {
+            .then( result => {
 
                 let p = result.data;
                 this.vm.productList.push( p );
             });
     }
 }
-// export default DataService;
 
 angular.module('app.services')
 	.config( function( $httpProvider ) {

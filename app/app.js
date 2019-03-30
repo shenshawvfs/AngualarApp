@@ -1,29 +1,12 @@
 /**
- * AngularJS Module Definitions
- *
- * @copyright: (C) 2014-2017 Kibble Games Inc in cooperation with
- *                            Vancouver Film School.
- *                            All Rights Reserved.
- * @author: Scott Henshaw
- *
+ * @Copyright (C)2014-2017 Kibble Games Inc in cooperation with Vancouver Film School.
+ * @author Scott Henshaw
  */
 'use strict';
 
 export class App {
 
     constructor() {
-
-        /*
-        Create a private data store for the entire App keyed by
-        each 'this' object, returning a private data object
-        */
-        this['private'] = new WeakMap();
-        this.private.members = ( key, value ) => {
-            if (value != undefined)
-                this.private.set( key, value );
-            return this.private.get( key );
-        }
-
         /*
          * Module definitions
          *
@@ -45,6 +28,7 @@ export class App {
         angular.module('app.services')
             .config( function( $httpProvider ) {
 
+                // POST paramaters urlencoded (PHP style)
                 let contentType = 'application/x-www-form-urlencoded;charset=utf-8'
                 $httpProvider.defaults.headers.post['Content-Type'] = contentType;
             });
